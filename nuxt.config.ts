@@ -17,6 +17,7 @@ export default defineNuxtConfig({
   plugins: [
     '~/plugins/icons-sprite.ts',
     '~/directives/click-outside.ts',
+    '~/plugins/pretty-amount.ts',
   ],
   tailwindcss: {
     cssPath: false,
