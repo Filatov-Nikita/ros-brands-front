@@ -1,10 +1,18 @@
 <template>
   <div class="mall-list" v-click-outside="outside">
     <NuxtLink class="mall-list__logo-link" to="/">
-      <img class="mall-list__logo" src="/images/logo_trk.svg" alt="логотип ТРЦ">
+      <img
+        class="mall-list__logo"
+        :width="currentMall.logo.width ?? 0"
+        :height="currentMall.logo.height ?? 0"
+        :src="currentMall.logo.url"
+        alt="логотип ТРЦ"
+      >
     </NuxtLink>
     <button class="mall-list__current" @click="showed = !showed">
-      <span class="mall-list__label">Красноярск</span>
+      <span class="mall-list__label">
+        {{ currentMall.city }}
+      </span>
       <BaseIcon class="mall-list__icon" name="arrow-down" color="#AFAF97" />
     </button>
     <Transition
@@ -12,11 +20,14 @@
       leave-active-class="animate__animated mall-dropdown__anim animate__fadeOutUp"
     >
       <div class="mall-dropdown" v-show="showed">
-        <button class="mall-dropdown__item">
-          Новокузнецк
-        </button>
-        <button class="mall-dropdown__item">
-          Новосибирск
+        <button
+          class="mall-dropdown__item"
+          :class="{ 'mall-dropdown__item--active': mall.id === mallStore.currentMall?.id }"
+          v-for="mall in mallStore.sortedMalls"
+          :key="mall.id"
+          @click="changeMall(mall.id)"
+        >
+          {{ mall.city }}
         </button>
       </div>
     </Transition>
@@ -24,9 +35,38 @@
 </template>
 
 <script setup lang="ts">
+  import useDataFetch from '@/composables/useDataFetch';
+  import type { MallOne } from '@/types/malls';
+  import type { Response } from '@/types/shared';
+
+  const mallStore = useMallStore();
   const showed = ref(false);
 
   function outside() {
+    showed.value = false;
+  }
+
+  const { data: malls } = await useDataFetch<Response<MallOne[]>>('malls');
+
+  mallStore.setMalls(malls.value?.data ?? []);
+
+  const currentMall = computed(() => {
+    const mall = mallStore.currentMall;
+
+    const logo = mall?.logotype ?? {
+      width: 0,
+      height: 0,
+      url: '/images/logo_trk.svg',
+    };
+
+    return {
+      city: mall?.city ?? '-',
+      logo,
+    }
+  });
+
+  function changeMall(mallId: number) {
+    mallStore.setMallId(mallId);
     showed.value = false;
   }
 </script>
@@ -82,7 +122,9 @@
 
     &__item {
       display: block;
+      width: 100%;
       color: #777777;
+      text-align: left;
 
       & + & {
         margin-top: 10px;
