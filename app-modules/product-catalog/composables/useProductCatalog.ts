@@ -1,16 +1,21 @@
-export interface ProductFilter {
-  top_level_cat?: string | number,
-  product_category_id?: string | number,
-  brand_id?: string | number,
-  order_by_price_asc?: string | number,
-  order_by_price_desc?: string | number,
-}
+import type { ProductFilter } from '../types';
+import { filterKey } from '../symbols';
+import useCategories from './useCategories';
 
 export default async function() {
   const route = useRoute();
   const router = useRouter();
 
   const filter: ProductFilter = reactive({});
+
+  provide(filterKey, filter);
+
+  const {
+    catList,
+    currentCat,
+    topLevelCatId,
+    setTopLevelCatId,
+  } = await useCategories();
 
   watch(() => route.query, () => {
     assignFilter();
@@ -31,5 +36,9 @@ export default async function() {
 
   return {
     filter,
+    catList,
+    currentCat,
+    topLevelCatId,
+    setTopLevelCatId,
   }
 }

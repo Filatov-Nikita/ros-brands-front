@@ -5,18 +5,22 @@
     </div>
     <div class="product-item__body">
       <div class="product-item__grid">
-        <span class="product-item__name">Ботильоны</span>
-        <span class="product-item__price">105 800 ₽</span>
+        <span class="product-item__name">{{ product.name }}</span>
+        <span class="product-item__price">{{ $amount(product.price) }}</span>
       </div>
       <div class="product-item__brand">
-        <span>Econica</span>
+        <span>{{ product.brand.name }}</span>
       </div>
     </div>
   </NuxtLink>
 </template>
 
 <script setup lang="ts">
+  import type { ProductOne } from '@/app-modules/product-catalog/types/products';
 
+  defineProps<{
+    product: ProductOne,
+  }>();
 </script>
 
 <style scoped lang="scss">

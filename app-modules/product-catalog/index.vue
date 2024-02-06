@@ -1,15 +1,21 @@
 <template>
   <main class="product-catalog">
     <aside class="top-level-cats">
-      <button class="nav-link top-level-cats__link nav-link--active">
-        Женщины
-      </button>
-      <button class="nav-link top-level-cats__link">
-        Мужчины
+      <button
+        class="nav-link top-level-cats__link"
+        :class="{ 'nav-link--active': cat.id === topLevelCatId }"
+        v-for="cat in catList"
+        :key="cat.id"
+        @click="setTopLevelCatId(cat.id)"
+      >
+        {{ cat.name }}
       </button>
     </aside>
+    <pre>
+      {{ filter }}
+    </pre>
     <div class="product-catalog__grid">
-      <CategoryList class="product-catalog__cat-list" />
+      <CategoryList v-if="currentCat" class="product-catalog__cat-list" :category="currentCat" />
       <ProductList class="product-catalog__product-list" />
     </div>
   </main>
@@ -20,11 +26,13 @@
   import ProductList from './components/Product/List.vue';
   import useProductCatalog from './composables/useProductCatalog';
 
-  const { filter } = await useProductCatalog();
-
-  const route = useRoute();
-  const router = useRouter();
-
+  const {
+    filter,
+    currentCat,
+    catList,
+    topLevelCatId,
+    setTopLevelCatId,
+  } = await useProductCatalog();
 </script>
 
 <style scoped lang="scss">
@@ -60,3 +68,4 @@
     }
   }
 </style>
+~/stores/product-categories
