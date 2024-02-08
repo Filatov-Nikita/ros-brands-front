@@ -2,10 +2,10 @@
   <div class="list-item">
     <button
       class="root-btn"
-      :class="{ 'root-btn--active': showed }" @click="changeParent(category.id)"
+      :class="{ 'root-btn--active': category.id === level2 }" @click="changeLevel2(category.id)"
     >
       <span>{{ category.name }}</span>
-      <BaseIcon class="root-btn__icon" :class="{ 'root-btn__icon--active': showed }" name="arrow-down" color="#929292" />
+      <BaseIcon class="root-btn__icon" :class="{ 'root-btn__icon--active': category.id === level2 }" name="arrow-down" color="#929292" />
     </button>
     <Transition
       enter-active-class="animate__animated children-list__anim animate__fadeInDown"
@@ -14,9 +14,12 @@
       <nav class="children-list" v-if="showed">
         <button
           class="children-list__item"
+          :class="{
+            'children-list__item--active': child.id === level3,
+          }"
           v-for="child in category.children"
           :key="child.id"
-          @click="filter.product_category_id = child.id"
+          @click="changeCategory(category.id, child.id)"
         >
           {{ child.name }}
         </button>
@@ -36,13 +39,23 @@
   const props = withDefaults(defineProps<{
     initialShowed?: boolean,
     category: ProductCategory,
+    level2?: number,
+    level3?: number,
   }>(), { initialShowed: false });
 
   const showed = ref(props.initialShowed);
 
-  function changeParent(parentId: number) {
+  const emits = defineEmits<{
+    (event: 'change:category', level2: number, level3?: number): void,
+  }>();
+
+  function changeCategory(level2: number, level3?: number) {
+    emits('change:category', level2, level3);
+  }
+
+  function changeLevel2(level2: number) {
     showed.value = !showed.value;
-    filter!.product_category_id = parentId;
+    changeCategory(level2);
   }
 </script>
 

@@ -3,19 +3,23 @@
     <aside class="top-level-cats">
       <button
         class="nav-link top-level-cats__link"
-        :class="{ 'nav-link--active': cat.id === topLevelCatId }"
+        :class="{ 'nav-link--active': cat.id === catLevel1 }"
         v-for="cat in catList"
         :key="cat.id"
-        @click="setTopLevelCatId(cat.id)"
+        @click="setCatLevel1(cat.id)"
       >
         {{ cat.name }}
       </button>
     </aside>
-    <pre>
-      {{ filter }}
-    </pre>
+
     <div class="product-catalog__grid">
-      <CategoryList v-if="currentCat" class="product-catalog__cat-list" :category="currentCat" />
+      <CategoryList
+        v-if="currentCat"
+        class="product-catalog__cat-list" :category="currentCat"
+        :level2="catLevel2"
+        :level3="catLevel3"
+        @change:category="setSubCategory"
+      />
       <ProductList class="product-catalog__product-list" />
     </div>
   </main>
@@ -30,8 +34,11 @@
     filter,
     currentCat,
     catList,
-    topLevelCatId,
-    setTopLevelCatId,
+    catLevel1,
+    catLevel2,
+    catLevel3,
+    setCatLevel1,
+    setSubCategory,
   } = await useProductCatalog();
 </script>
 

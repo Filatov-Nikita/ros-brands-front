@@ -3,7 +3,7 @@
     <div class="checkbox-control__checkbox">
       <BaseIcon class="checkbox-control__icon-active" name="checked" />
     </div>
-    <span class="checkbox-control__label">Charuel</span>
+    <span class="checkbox-control__label">{{ label }}</span>
   </div>
 </template>
 
@@ -12,6 +12,7 @@
     modelValue?: any,
     checkedValue?: any,
     uncheckedValue?: any,
+    label: string,
   }>(), {});
 
   const emit = defineEmits<{

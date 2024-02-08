@@ -69,6 +69,10 @@
   cursor: pointer;
 
   &:hover {
+    background-color: #f7f7f7;
+  }
+
+  &--active, &--active:hover, &:active {
     background-color: #EDEDE9;
   }
 }
@@ -107,7 +111,7 @@
     height: 15px;
   }
 
-  &__input:focus ~ &__label {
+  &__input:focus ~ &__label,  &__input--filled ~ &__label {
     display: none;
   }
 }

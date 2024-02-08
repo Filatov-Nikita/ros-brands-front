@@ -10,14 +10,22 @@
     >
       <div v-if="showed" class="select-dropdown">
         <div class="select-dropdown__body pretty-scroll tw-mb-5">
-          <div class="select-simple-option">
+          <div
+            class="select-simple-option"
+            :class="{ 'select-simple-option--active': localValue === -1 }"
+            @click="localValue = -1"
+          >
             По возрастанию
           </div>
-          <div class="select-simple-option">
+          <div
+            class="select-simple-option"
+            :class="{ 'select-simple-option--active': localValue === 1 }"
+            @click="localValue = 1"
+          >
             По убыванию
           </div>
         </div>
-        <BaseButton class="tw-w-full">Готово</BaseButton>
+        <BaseButton class="tw-w-full" @click="change">Готово</BaseButton>
       </div>
     </Transition>
   </div>
@@ -26,7 +34,30 @@
 <script setup lang="ts">
   import useSelect from '@/composables/components/useSelect';
 
+  type Value = -1 | 0 | 1
+
+  const props = defineProps<{
+    modelValue?: Value,
+  }>();
+
   const { showed, toggle, hide } = useSelect();
+
+  const localValue = ref<Value>();
+
+  const emit = defineEmits<{
+    (event: 'update:modelValue', value?: Value): void,
+  }>();
+
+  function change() {
+    emit('update:modelValue', localValue.value);
+    hide();
+  }
+
+  watch(() => props.modelValue, () => {
+    if(localValue.value !== props.modelValue) {
+      localValue.value = props.modelValue;
+    }
+  }, { immediate: true });
 </script>
 
 <style src="@/assets/css/components/select.scss" lang="scss"></style>
