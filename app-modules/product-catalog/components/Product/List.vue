@@ -19,7 +19,10 @@
         @clear="clearFilter"
       />
     </div>
-    <div class="product-list section-list__items" v-if="products">
+    <div class="product-list-empty" v-if="products && products.data.length === 0">
+      <p>Нет подходящих товаров</p>
+    </div>
+    <div class="product-list" v-else-if="products">
       <Item
         class="product-list__item"
         v-for="product in products.data"
@@ -65,6 +68,7 @@
       product_category_id: filter.level3 ?? filter.level2 ?? filter.level1,
       order_price_asc: filter.order_by_price === -1 ? 1 : undefined,
       order_price_desc: filter.order_by_price === 1 ? 1 : undefined,
+      mall_id: useMallStore().currentMallId,
       ...brand_ids,
     }
   });
@@ -109,5 +113,14 @@
     &__item {
       flex-basis: 220px;
     }
+  }
+
+  .product-list-empty {
+    padding: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 300px;
   }
 </style>
