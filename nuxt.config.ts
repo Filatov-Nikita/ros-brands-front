@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     '~/plugins/icons-sprite.ts',
     '~/directives/click-outside.ts',
     '~/plugins/pretty-amount.ts',
+    '~/plugins/format-date.ts',
   ],
   tailwindcss: {
     cssPath: false,
