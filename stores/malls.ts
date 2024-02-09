@@ -21,11 +21,14 @@ export const useMallStore = defineStore('mallStore', function() {
     return [ ...malls.value ].sort((a, b) => b.priority - a.priority);
   });
 
+  const mallCode = computed(() => currentMall.value?.planeta_mall_code ?? 'krs');
+
   return {
     malls,
     currentMall,
     sortedMalls,
     currentMallId,
+    mallCode,
     setMalls,
     setMallId,
   }

@@ -5,7 +5,7 @@
         <MallList />
         <Nav class="header-public__nav" />
         <div class="header-public__actions">
-          <a class="action-btn" href="#">
+          <a class="action-btn" :href="hrefMap" target="_blank">
             <BaseIcon class="action-btn__icon" name="map" />
           </a>
           <a class="action-btn" href="#">
@@ -20,6 +20,8 @@
 <script setup lang="ts">
   import Nav from './components/Nav.vue';
   import MallList from './components/MallList/index.vue';
+
+  const hrefMap = computed(() => `https://${useMallStore().mallCode}.planeta-mall.ru/scheme`);
 </script>
 
 <style scoped lang="scss">
