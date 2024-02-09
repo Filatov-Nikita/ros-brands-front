@@ -40,4 +40,26 @@
     scrollbar-width: 5px;
     scrollbar-color: #D9D9D9 transparent;
   }
+
+  .page-paddings {
+    padding-top: 50px;
+    padding-bottom: 100px;
+  }
+
+  .map-link {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #3e68ff;
+    @apply tw-text-14;
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    &__icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
 }
