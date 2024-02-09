@@ -54,6 +54,10 @@ export default async function() {
     }
   }
 
+  function syncQuery() {
+    router.replace({ query: Object.assign({}, route.query, filter) });
+  }
+
   watch([
     catLevel1,
     catLevel2,
@@ -69,8 +73,8 @@ export default async function() {
   }, { immediate: true });
 
   watch(() => JSON.stringify(filter), () => {
-    router.replace({ query: Object.assign({}, route.query, filter) });
-  }, { immediate: true });
+    syncQuery();
+  });
 
   return {
     filter,
@@ -81,6 +85,7 @@ export default async function() {
     catLevel3,
     setCatLevel1,
     setSubCategory,
-    clearFilter
+    clearFilter,
+    syncQuery,
   }
 }

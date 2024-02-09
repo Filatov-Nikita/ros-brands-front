@@ -39,7 +39,12 @@
     catLevel3,
     setCatLevel1,
     setSubCategory,
+    syncQuery
   } = await useProductCatalog();
+
+  onMounted(() => {
+    syncQuery();
+  });
 </script>
 
 <style scoped lang="scss">
