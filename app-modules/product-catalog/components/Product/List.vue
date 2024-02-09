@@ -30,18 +30,36 @@
         :product="product"
       />
     </div>
-    <!-- <BaseButtonOutline>
-      Показать ещё
-    </BaseButtonOutline> -->
+    <div class="tw-mt-14 tw-flex tw-flex-col tw-items-center">
+      <BaseButtonOutline class="tw-mb-8 tw-max-w-[250px] tw-w-full" v-if="!pagination.isLast.value && meta" @click="loadMore">
+        Показать ещё
+      </BaseButtonOutline>
+      <PagePagination
+        v-if="meta"
+        :current-page="meta.current_page"
+        :last-page="meta.last_page"
+        :current-section="pagination.currentSection.value"
+        :prev-page="pagination.prevPage.value"
+        :next-page="pagination.nextPage.value"
+        :show-end-dots="pagination.showEndDots.value"
+        :show-start-dots="pagination.showStartDots.value"
+        :show-start="pagination.showStart.value"
+        :show-end="pagination.showEnd.value"
+        @prev="prev"
+        @next="next"
+        @set-page="setPage"
+      />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
   import Item from './Item.vue';
   import FilterControl from './FilterControl.vue';
-  import type { ProductOne } from '../../types/products';
+  import useProductList from '../../composables/useProductList';
   import type { BrandListItem } from '@/types/brands';
   import { filterKey, clearFilterKey } from '../../symbols';
+
   const filter = inject(filterKey);
   const clearFilter = inject(clearFilterKey);
 
@@ -58,27 +76,15 @@
     filter!.brand_ids = filter!.brand_ids.filter(id => id !== brandId);
   }
 
-  const query = computed(() => {
-    const brand_ids = filter.brand_ids?.reduce((acc, value, index) => {
-      acc[`brand_ids[${index}]`] = value;
-      return acc;
-    }, {} as any) ?? {};
-
-    return {
-      product_category_id: filter.level3 ?? filter.level2 ?? filter.level1,
-      order_price_asc: filter.order_by_price === -1 ? 1 : undefined,
-      order_price_desc: filter.order_by_price === 1 ? 1 : undefined,
-      mall_id: useMallStore().currentMallId,
-      ...brand_ids,
-    }
-  });
-
-  const { data: products, refresh } = await useDataFetch<{ data: ProductOne[] }>('products', {
-    query,
-    watch: false,
-  });
-
-  watch(() => JSON.stringify(query.value), () => refresh());
+  const {
+    products,
+    pagination,
+    meta,
+    prev,
+    next,
+    setPage,
+    loadMore,
+  } = await useProductList(filter);
 </script>
 
 <style scoped lang="scss">
