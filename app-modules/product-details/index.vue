@@ -2,7 +2,7 @@
   <div class="product-detailed" v-if="productDetailed">
     <div class="product-detailed__grid">
       <div class="product-detailed__left">
-        1
+        <SliderPrimary :images="productDetailed.images" />
       </div>
       <div class="product-detailed__right">
         <div class="product-detailed__brand-wrap">

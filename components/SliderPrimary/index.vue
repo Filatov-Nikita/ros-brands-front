@@ -15,7 +15,7 @@
     }"
   >
     <swiper-slide v-for="image in images">
-      <img :src="image.url" />
+      <img class="slider-primary__img" :src="image.url" />
     </swiper-slide>
 
     <button class="slider-primary-prev">
@@ -34,7 +34,7 @@
     @swiper="setMiniSwiper"
   >
     <swiper-slide v-for="image in images">
-      <img :src="image.url" />
+      <img class="slider-primary-mini__img" :src="image.url" />
     </swiper-slide>
   </swiper>
 </template>
@@ -75,6 +75,12 @@
     .swiper-pagination-bullet-active {
       background-color: #000000;
     }
+
+    &__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
   .slider-primary-mini {
@@ -87,6 +93,12 @@
 
     .swiper-slide-thumb-active {
       border: 1px solid theme('colors.black');
+    }
+
+    &__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
 

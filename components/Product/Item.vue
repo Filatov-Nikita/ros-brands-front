@@ -1,7 +1,14 @@
 <template>
-  <NuxtLink class="product-item" to="#">
+  <NuxtLink class="product-item" :to="`/products/${product.id}`">
     <div class="product-item__img-wrap">
-      <img class="product-item__img" src="/images/product-card.jpg" loading="lazy" />
+      <img
+        v-if="product.thumbnail"
+        class="product-item__img"
+        :width="product.thumbnail.width ?? 0"
+        :height="product.thumbnail.height ?? 0"
+        :src="product.thumbnail.url"
+        loading="lazy"
+      />
     </div>
     <div class="product-item__body">
       <div class="product-item__grid">
