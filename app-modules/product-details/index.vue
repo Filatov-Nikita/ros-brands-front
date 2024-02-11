@@ -32,6 +32,16 @@
           <p class="section-item__label">Описание</p>
           <p class="section-item__text product-detailed__description">{{ productDetailed.description }}</p>
         </div>
+        <div class="product-detailed__actions">
+          <button class="action-btn-outline">
+            <span>Поделиться</span>
+            <BaseIcon class="action-btn-outline__icon" color="#393939" name="heart" />
+          </button>
+          <button class="action-btn-outline">
+            <span>Поделиться</span>
+            <BaseIcon class="action-btn-outline__icon" color="#393939" name="share" />
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -66,6 +76,7 @@
 
     &__left {
       flex-basis: 520px;
+      max-width: 520px;
     }
 
     &__right {
@@ -106,6 +117,13 @@
 
     &__description {
       white-space: pre-wrap;
+    }
+
+    &__actions {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
   }
 
