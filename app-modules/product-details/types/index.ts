@@ -1,3 +1,5 @@
+import type { Image } from '@/types/shared';
+
 export interface ProductDetailed {
   id:                 number;
   name:               string;
@@ -6,6 +8,7 @@ export interface ProductDetailed {
   description:        string;
   product_categories: ProductCategory[];
   brand:              Brand;
+  images:             Image[];
   updated_at:         string;
 }
 
