@@ -5,12 +5,12 @@
         <MallList />
         <Nav class="header-public__nav" />
         <div class="header-public__actions">
-          <a class="action-btn" :href="hrefMap" target="_blank">
-            <BaseIcon class="action-btn__icon" name="map" />
+          <a class="header-action-btn" :href="hrefMap" target="_blank">
+            <BaseIcon class="header-action-btn__icon" name="map" />
           </a>
-          <a class="action-btn" href="#">
-            <BaseIcon class="action-btn__icon" name="heart" />
-          </a>
+          <NuxtLink class="header-action-btn" to="/favorites">
+            <BaseIcon class="header-action-btn__icon" name="heart" />
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@
     }
   }
 
-  .action-btn {
+  .header-action-btn {
     min-width: 40px;
     width: 40px;
     height: 40px;
