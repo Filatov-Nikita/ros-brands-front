@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink class="product-item" :to="`/products/${product.id}`">
+  <NuxtLink class="product-item" :to="`/products/${product.id}`" :target="target">
     <div class="product-item__img-wrap">
       <img
         v-if="product.thumbnail"
@@ -25,9 +25,10 @@
 <script setup lang="ts">
   import type { ProductOne } from '@/app-modules/product-catalog/types/products';
 
-  defineProps<{
+  withDefaults(defineProps<{
     product: ProductOne,
-  }>();
+    target?: '_blank' | '_self',
+  }>(), { target: '_self' });
 </script>
 
 <style scoped lang="scss">
