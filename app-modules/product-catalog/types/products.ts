@@ -5,7 +5,6 @@ export interface ProductOne {
   name:   string;
   price:  number;
   brand:  Brand;
-  images: Image[];
   thumbnail: Image | null;
 }
 

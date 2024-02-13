@@ -18,9 +18,7 @@
         <p class="designer-detailed__position">
           {{ designerDetailed.data.position }}
         </p>
-        <p class="designer-detailed__body">
-          {{ designerDetailed.data.description }}
-        </p>
+        <p class="designer-detailed__body" v-html="designerDetailed.data.description"></p>
       </div>
     </div>
   </div>
@@ -43,7 +41,7 @@
   if(designerDetailed.value) {
     useBreadcrumbsStore().set([
       { label: 'Стилисты', to: '/designers' },
-      { label: designerDetailed.value.data.name, to: url.value },
+      { label: designerDetailed.value.data.name, to: `/designers/${props.id}` },
     ]);
   }
 </script>

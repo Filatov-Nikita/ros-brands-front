@@ -7,5 +7,5 @@ export interface MallOne {
   planeta_mall_code: string;
   site_href:         string;
   priority:          number;
-  logotype:          Image;
+  logotype:          Image | null;
 }
