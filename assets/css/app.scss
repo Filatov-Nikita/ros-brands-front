@@ -4,6 +4,7 @@
 
 @layer base {
   body {
+    line-height: normal;
     @apply tw-font-manrope tw-text-base tw-text-black;
   }
 }
@@ -60,6 +61,14 @@
     &__icon {
       width: 24px;
       height: 24px;
+    }
+  }
+
+  .app-link {
+    color: #3e68ff;
+
+    &:hover {
+      opacity: 0.6;
     }
   }
 
