@@ -1,0 +1,41 @@
+<template>
+  <NuxtLink class="look-card" :to="`/looks/${look.id}`" target="_blank">
+    <div v-if="$slots.actions" class="look-card__actions">
+      <slot name="actions" />
+    </div>
+    <div class="look-card__img-wrap">
+      <img class="look-card__img" src="/images/product-card.jpg" />
+    </div>
+  </NuxtLink>
+</template>
+
+<script setup lang="ts">
+  import type { LookListItem } from '@/types/looks';
+
+  defineProps<{
+    look: LookListItem,
+  }>();
+</script>
+
+<style scoped lang="scss">
+  .look-card {
+    position: relative;
+
+    &__img-wrap {
+      height: 430px;
+    }
+
+    &__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &__actions {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 10;
+    }
+  }
+</style>
