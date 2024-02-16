@@ -5,6 +5,11 @@ import path from 'path';
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  routeRules: {
+    '/favorites': {
+      ssr: false,
+    }
+  },
   modules: [
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
