@@ -13,10 +13,9 @@
           :designer="lookDetailed.data.designer"
         />
         <div class="look-detailed__actions">
-          <button class="action-btn-outline">
-            <span>Поделиться</span>
-            <BaseIcon class="action-btn-outline__icon" color="#393939" name="heart" />
-          </button>
+          <ClientOnly>
+            <FavoriteOutlineBtn type="look" :id="lookDetailed.data.id" />
+          </ClientOnly>
           <button class="action-btn-outline">
             <span>Поделиться</span>
             <BaseIcon class="action-btn-outline__icon" color="#393939" name="share" />
@@ -34,6 +33,7 @@
   import type { LookDetailed } from './types';
   import LookProducts from './components/LookProducts.vue'
   import ExtraInfo from './components/ExtraInfo.vue'
+  import { FavoriteOutlineBtn } from '@/app-modules/favorite-add';
 
   const props = defineProps<{
     id: number,

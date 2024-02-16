@@ -1,5 +1,8 @@
 <template>
   <NuxtLink class="product-item" :to="`/products/${product.id}`" :target="target">
+    <div v-if="$slots.actions" class="product-item__actions">
+      <slot name="actions" />
+    </div>
     <div class="product-item__img-wrap">
       <img
         v-if="product.thumbnail"
@@ -33,6 +36,8 @@
 
 <style scoped lang="scss">
   .product-item {
+    position: relative;
+
     &__img-wrap {
       position: relative;
       width: 100%;
@@ -65,6 +70,13 @@
       display: flex;
       gap: 10px;
       align-items: flex-start;
+    }
+
+    &__actions {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 10;
     }
   }
 </style>

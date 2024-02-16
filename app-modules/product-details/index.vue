@@ -33,10 +33,9 @@
           <p class="section-item__text product-detailed__description">{{ productDetailed.description }}</p>
         </div>
         <div class="product-detailed__actions">
-          <button class="action-btn-outline">
-            <span>Поделиться</span>
-            <BaseIcon class="action-btn-outline__icon" color="#393939" name="heart" />
-          </button>
+          <ClientOnly>
+            <FavoriteOutlineBtn type="product" :id="productDetailed.id" />
+          </ClientOnly>
           <button class="action-btn-outline">
             <span>Поделиться</span>
             <BaseIcon class="action-btn-outline__icon" color="#393939" name="share" />
@@ -50,6 +49,7 @@
 <script setup lang="ts">
   import type { ProductDetailed } from './types';
   import useBread from './composables/useBread';
+  import { FavoriteOutlineBtn } from '@/app-modules/favorite-add';
 
   const route = useRoute();
 
