@@ -15,6 +15,9 @@ export default {
     colors: {
       'black': '#1A1A1A',
       'white': '#ffffff',
+      'error': '#F13F36',
+      'warning': '#FEBF22',
+      'success': '#4FBA78',
     },
     fontFamily: {
       'manrope': ['Manrope', 'sans-serif'],
