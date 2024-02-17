@@ -15,11 +15,8 @@
         <div class="look-detailed__actions">
           <ClientOnly>
             <FavoriteOutlineBtn type="look" :id="lookDetailed.data.id" />
+            <ShareOutlineBtn />
           </ClientOnly>
-          <button class="action-btn-outline">
-            <span>Поделиться</span>
-            <BaseIcon class="action-btn-outline__icon" color="#393939" name="share" />
-          </button>
         </div>
       </div>
       <div class="look-detailed__right">
@@ -34,6 +31,7 @@
   import LookProducts from './components/LookProducts.vue'
   import ExtraInfo from './components/ExtraInfo.vue'
   import { FavoriteOutlineBtn } from '@/app-modules/favorite-add';
+  import { ShareOutlineBtn } from '@/app-modules/share-page';
 
   const props = defineProps<{
     id: number,

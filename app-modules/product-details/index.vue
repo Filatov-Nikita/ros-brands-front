@@ -35,11 +35,8 @@
         <div class="product-detailed__actions">
           <ClientOnly>
             <FavoriteOutlineBtn type="product" :id="productDetailed.id" />
+            <ShareOutlineBtn />
           </ClientOnly>
-          <button class="action-btn-outline">
-            <span>Поделиться</span>
-            <BaseIcon class="action-btn-outline__icon" color="#393939" name="share" />
-          </button>
         </div>
       </div>
     </div>
@@ -50,6 +47,7 @@
   import type { ProductDetailed } from './types';
   import useBread from './composables/useBread';
   import { FavoriteOutlineBtn } from '@/app-modules/favorite-add';
+  import { ShareOutlineBtn } from '@/app-modules/share-page';
 
   const route = useRoute();
 
