@@ -28,6 +28,7 @@
         v-for="product in products.data"
         :key="product.id"
         :product="product"
+        target="_blank"
       />
     </div>
     <div class="tw-mt-14 tw-flex tw-flex-col tw-items-center">

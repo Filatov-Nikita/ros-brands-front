@@ -30,7 +30,7 @@
 
     &__item {
       margin: 10px;
-      width: calc(100% / 12 * 4 - 10px);
+      width: calc(100% / 12 * 3 - 10px);
     }
   }
 

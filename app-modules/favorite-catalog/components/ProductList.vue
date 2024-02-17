@@ -5,6 +5,7 @@
       v-for="product in response.data"
       :key="product.id"
       :product="product"
+      target="_blank"
     />
   </div>
   <Empty v-else />
