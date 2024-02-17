@@ -36,6 +36,7 @@
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.25);
+    z-index: 50;
     @apply tw-bg-white;
 
     &__title {
