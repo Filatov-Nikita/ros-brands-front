@@ -16,9 +16,11 @@
           <h1 class="product-detailed__title">{{ productDetailed.name }}</h1>
           <div class="product-detailed__price price-total">
             <span>{{ $amount(productDetailed.price) }}</span>
-            <button class="price-total__sale-btn">
-              <BaseIcon class="price-total__sale" color="#393939" name="sale" />
-            </button>
+            <ProductPromotionPreview
+              v-if="productDetailed.brand.promotions.length > 0"
+              :title="productDetailed.brand.promotions[0].title"
+              :text="productDetailed.brand.promotions[0].description"
+            />
           </div>
           <p class="product-detailed__actual-price-date">
             Цена действительна на {{ $formatDate(productDetailed.updated_at) }}
@@ -130,21 +132,6 @@
     align-items: center;
     gap: 12px;
     @apply tw-text-20 tw-font-bold;
-
-    &__sale-btn {
-      width: 32px;
-      height: 32px;
-      padding: 4px;
-
-      &:hover {
-        opacity: 0.6;
-      }
-    }
-
-    &__sale {
-      width: 100%;
-      height: 100%;
-    }
   }
 
   .section-item {

@@ -1,4 +1,5 @@
 import type { Image } from '@/types/shared';
+import type { PromotionListItem } from '@/types/promotions';
 
 export interface ProductDetailed {
   id:                 number;
@@ -16,6 +17,7 @@ export interface Brand {
   id:   number;
   name: string;
   planeta_mall_id: number,
+  promotions: PromotionListItem[],
 }
 
 export interface ProductCategory {

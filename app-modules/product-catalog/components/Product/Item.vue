@@ -4,6 +4,12 @@
       <ClientOnly>
         <FavoriteHeart type="product" :id="product.id" />
       </ClientOnly>
+      <ProductPromotionPreview
+        class="tw-mt-[6px]"
+        v-if="product.brand.promotions.length > 0"
+        :title="product.brand.promotions[0].title"
+        :text="product.brand.promotions[0].description"
+      />
     </template>
   </ProductItem>
 </template>
