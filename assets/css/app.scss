@@ -90,4 +90,10 @@
       height: 24px;
     }
   }
+
+  h2, .h2 {
+    font-size: 32px;
+    line-height: normal;
+    @apply tw-font-bold tw-text-black;
+  }
 }

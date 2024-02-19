@@ -4,7 +4,13 @@
       <slot name="actions" />
     </div>
     <div class="look-card__img-wrap">
-      <img class="look-card__img" src="/images/product-card.jpg" />
+      <img
+        v-if="look.thumbnail"
+        class="look-card__img"
+        :src="look.thumbnail.url"
+        :width="look.thumbnail.width ?? 0"
+        :height="look.thumbnail.height ?? 0"
+      />
     </div>
   </NuxtLink>
 </template>
