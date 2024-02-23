@@ -31,6 +31,10 @@
     &__img-wrap {
       height: 430px;
       margin-bottom: 16px;
+
+      @include sm {
+        margin-bottom: 12px;
+      }
     }
 
     &__img {

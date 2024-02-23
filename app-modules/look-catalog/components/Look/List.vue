@@ -27,10 +27,19 @@
     display: flex;
     flex-wrap: wrap;
     margin: -10px;
+    --col: 3;
+
+    @include lg {
+      --col: 4;
+    }
+
+    @include md {
+      --col: 6;
+    }
 
     &__item {
       margin: 10px;
-      width: calc(100% / 12 * 3 - 10px);
+      width: calc(100% / 12 * var(--col) - 20px);
     }
   }
 

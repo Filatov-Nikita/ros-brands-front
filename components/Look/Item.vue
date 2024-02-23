@@ -29,6 +29,10 @@
 
     &__img-wrap {
       height: 430px;
+
+      @include sm {
+        height: 240px;
+      }
     }
 
     &__img {

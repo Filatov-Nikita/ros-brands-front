@@ -57,6 +57,10 @@
       line-height: normal;
       margin-bottom: 10px;
       @apply tw-font-bold;
+
+      @include sm {
+        font-size: 26px;
+      }
     }
 
     &__position {
@@ -75,10 +79,30 @@
       display: flex;
       flex-wrap: wrap;
       gap: 50px;
+
+      @include md {
+        gap: 30px;
+      }
+
+      @include sm {
+        gap: 20px;
+      }
     }
 
     &__img-wrap {
       width: 530px;
+
+      @include lg {
+        width: 420px;
+      }
+
+      @include md {
+        width: 470px;
+      }
+
+      @include sm {
+        width: 100%;
+      }
     }
 
     &__img {
@@ -89,6 +113,14 @@
     &__content {
       flex-grow: 1;
       width: 500px;
+
+      @include lg {
+        width: 450px;
+      }
+
+      @include sm {
+        width: 100%;
+      }
     }
   }
 </style>
