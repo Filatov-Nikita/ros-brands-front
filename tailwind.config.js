@@ -12,6 +12,11 @@ export default {
     './app.vue',
   ],
   theme: {
+    extend: {
+      zIndex: {
+        '9000': '9000'
+      }
+    },
     colors: {
       'black': '#1A1A1A',
       'white': '#ffffff',

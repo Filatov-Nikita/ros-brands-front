@@ -80,6 +80,10 @@
       width: 185px;
       margin-bottom: 5px;
 
+      @include sm {
+        width: 115px;
+      }
+
       img {
         width: 100%;
       }
@@ -96,7 +100,11 @@
     }
 
     &__label {
+      line-height: normal;
 
+      @include sm {
+        font-size: 12px;
+      }
     }
 
     &__icon {
