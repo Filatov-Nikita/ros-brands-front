@@ -49,15 +49,32 @@
     padding-bottom: 64px;
     background-color: #E3E3E0;
 
+    @include md {
+      padding-top: 30px;
+      padding-bottom: 60px;
+    }
+
     &__grid {
       display: grid;
       grid-template-columns: 285px 290px 200px;
       gap: 30px;
+
+      @include md {
+        grid-template-columns: 210px 230px 200px;
+      }
+
+      @include sm {
+        grid-template-columns: 100%;
+      }
     }
 
     &__logo {
       display: block;
       width: 185px;
+
+      @include sm {
+        width: 115px;
+      }
 
       img {
         width: 100%;
