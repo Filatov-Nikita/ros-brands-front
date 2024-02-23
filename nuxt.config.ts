@@ -14,6 +14,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
     'nuxt-swiper',
+    '@nuxtjs/device',
   ],
   css: [
     '~/assets/css/fonts.scss',
