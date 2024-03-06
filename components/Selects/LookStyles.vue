@@ -23,8 +23,8 @@
 
 <script setup lang="ts">
   import useSelect from '@/composables/components/useSelect';
+  import useStyles from '@/composables/components/look-filter/useStyles';
   import type { LookStyleListOne } from '@/types/look-styles';
-  import type { Response } from '@/types/shared';
 
   const props = defineProps<{
     modelValue?: number[],
@@ -37,14 +37,7 @@
 
   const { showed, toggle, hide } = useSelect();
 
-  const localStyles = ref<number[]>([]);
-
-  const { data: styleList } = await useDataFetch<Response<LookStyleListOne[]>>('/look-styles');
-
-  const currentItems = computed(() => {
-    if(!styleList.value) return [];
-    return styleList.value.data.filter(brand => localStyles.value.includes(brand.id));
-  });
+  const { localStyles, currentItems, styleList } = await useStyles();
 
   function change() {
     emits('update:modelValue', localStyles.value);
@@ -61,5 +54,3 @@
     emits('update:currentItems', currentItems.value);
   }, { immediate: true });
 </script>
-
-<style src="@/assets/css/components/select.scss" lang="scss"></style>

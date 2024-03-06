@@ -23,8 +23,8 @@
 
 <script setup lang="ts">
   import useSelect from '@/composables/components/useSelect';
+  import useDesigners from '@/composables/components/look-filter/useDesigners';
   import type { DesignerListItem } from '@/app-modules/designer-list/types';
-  import type { Response } from '@/types/shared';
 
   const props = defineProps<{
     modelValue?: number[],
@@ -37,14 +37,7 @@
 
   const { showed, toggle, hide } = useSelect();
 
-  const localDesigner = ref<number[]>([]);
-
-  const { data: designerList } = await useDataFetch<Response<DesignerListItem[]>>('/designers');
-
-  const currentItems = computed(() => {
-    if(!designerList.value) return [];
-    return designerList.value.data.filter(brand => localDesigner.value.includes(brand.id));
-  });
+  const { localDesigner, currentItems, designerList } = await useDesigners();
 
   function change() {
     emits('update:modelValue', localDesigner.value);
@@ -61,5 +54,3 @@
     emits('update:currentItems', currentItems.value);
   }, { immediate: true });
 </script>
-
-<style src="@/assets/css/components/select.scss" lang="scss"></style>

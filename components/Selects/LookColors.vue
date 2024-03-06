@@ -39,8 +39,8 @@
 
 <script setup lang="ts">
   import useSelect from '@/composables/components/useSelect';
+  import useColors from '@/composables/components/look-filter/useColors';
   import type { LookColorListOne } from '@/types/look-colors';
-  import type { Response } from '@/types/shared';
 
   const props = defineProps<{
     modelValue?: number[],
@@ -53,14 +53,7 @@
 
   const { showed, toggle, hide } = useSelect();
 
-  const localColors = ref<number[]>([]);
-
-  const { data: colorList } = await useDataFetch<Response<LookColorListOne[]>>('/look-colors');
-
-  const currentItems = computed(() => {
-    if(!colorList.value) return [];
-    return colorList.value.data.filter(brand => localColors.value.includes(brand.id));
-  });
+  const { localColors, currentItems, colorList } = await useColors();
 
   function change() {
     emits('update:modelValue', localColors.value);
@@ -77,9 +70,6 @@
     emits('update:currentItems', currentItems.value);
   }, { immediate: true });
 </script>
-
-<style src="@/assets/css/components/select.scss" lang="scss"></style>
-
 
 <style scoped lang="scss">
   .checkbox-color-label {
