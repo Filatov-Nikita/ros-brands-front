@@ -59,5 +59,3 @@
     }
   }, { immediate: true });
 </script>
-
-<style src="@/assets/css/components/select.scss" lang="scss"></style>

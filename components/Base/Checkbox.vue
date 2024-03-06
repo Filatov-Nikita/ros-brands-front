@@ -47,5 +47,3 @@
     }
   }
 </script>
-
-<style src="@/assets/css/components/checkbox.scss" lang="scss"></style>
