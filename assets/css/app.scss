@@ -117,4 +117,6 @@
     line-height: normal;
     @apply tw-font-bold tw-text-black;
   }
+
+  @import './components/accordion.scss';
 }
