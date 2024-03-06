@@ -17,7 +17,7 @@
   >
     <SwiperSlide
       class="promo-banner-swiper__slide"
-      v-for="banner in banners.data"
+      v-for="banner in list"
       :key="banner.id"
     >
       <a v-if="banner.href" class="promo-banner-swiper__href" :href="banner.href" target="_blank">
@@ -53,11 +53,35 @@
   import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
   const { data: banners } = await useDataFetch<Response<BannerOne[]>>('/banners');
+
+  const { isMobile } = useDevice();
+
+  const list = computed(() => {
+    if(!banners.value) return [];
+    return banners.value.data.map(banner => {
+      return {
+        id: banner.id,
+        href: banner.href,
+        image: getImage(banner),
+      }
+    });
+  });
+
+  function getImage(banner: BannerOne) {
+    if(isMobile) {
+      return banner.image_mobile;
+    }
+    return banner.image;
+  }
 </script>
 
 <style lang="scss">
   .promo-banner-swiper {
     height: 350px;
+
+    @include sm {
+      height: 170px;
+    }
 
     &__img {
       width: 100%;
