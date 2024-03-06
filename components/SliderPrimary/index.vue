@@ -27,6 +27,7 @@
   </swiper>
 
   <swiper
+    v-if="isDesktopOrTablet"
     class="slider-primary-mini tw-mt-3"
     :modules="[ Thumbs ]"
     :slidesPerView="4"
@@ -42,6 +43,8 @@
   import { Thumbs, Pagination, Navigation } from 'swiper/modules';
   import type { Image } from '@/types/shared';
 
+  const { isDesktopOrTablet } = useDevice();
+
   defineProps<{
     images: Image[],
   }>();
@@ -56,6 +59,10 @@
 <style lang="scss">
   .slider-primary {
     height: 500px;
+
+    @include sm {
+      height: 420px;
+    }
 
     .swiper-pagination-bullets {
       bottom: 10px;

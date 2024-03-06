@@ -23,13 +23,29 @@
   .look-products {
     display: flex;
     flex-wrap: wrap;
-    margin-left: -50px;
-    margin-top: -35px;
+    --span-l: 50px;
+    --span-t: 35px;
+    --col: 6;
+    margin-left: calc(var(--span-l) * -1);
+    margin-top: calc(var(--span-t) * -1);
+
+    @include lg {
+      --span-l: 30px;
+      --span-t: 30px;
+    }
+
+    @include md {
+      --col: 4;
+    }
+
+    @include sm {
+      --col: 12;
+    }
 
     &__item {
-      margin-left: 50px;
-      margin-top: 35px;
-      width: calc(50% - 50px);
+      margin-left: var(--span-l);
+      margin-top: var(--span-t);
+      width: calc(100% / 12 * var(--col) - var(--span-l));
     }
   }
 </style>

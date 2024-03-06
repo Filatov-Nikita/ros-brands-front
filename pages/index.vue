@@ -5,7 +5,11 @@
         <span class="main-title__label">СТИЛЬНЫЕ ОБРАЗЫ</span>
         <span class="main-title__subtitle">от российских брендов</span>
       </h1>
+    </div>
+    <div class="wrapper promo-wrapper">
       <PromoBanner class="home-page__banner" />
+    </div>
+    <div class="wrapper">
       <LookCatalog />
     </div>
   </main>
@@ -27,6 +31,10 @@
       line-height: normal;
       text-transform: uppercase;
       @apply tw-font-extrabold;
+
+      @include sm {
+        font-size: 32px;
+      }
     }
 
     &__subtitle {
@@ -35,6 +43,11 @@
       text-align: right;
       font-size: 32px;
       line-height: normal;
+
+      @include sm {
+        font-size: 20px;
+        text-align: left;
+      }
     }
   }
 
@@ -42,12 +55,32 @@
     padding-top: 40px;
     padding-bottom: 100px;
 
+    @include sm {
+      padding-top: 25px;
+      padding-bottom: 80px;
+    }
+
     &__title {
       margin-bottom: 30px;
+
+      @include sm {
+        margin-bottom: 20px;
+      }
     }
 
     &__banner {
       margin-bottom: 40px;
+
+      @include sm {
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  .promo-wrapper {
+    @include sm {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
     }
   }
 </style>

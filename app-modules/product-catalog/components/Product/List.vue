@@ -19,6 +19,13 @@
         @clear="clearFilter"
       />
     </div>
+
+    <div class="section-list__filter-mobile">
+      <MSelectProductFilter
+        v-model:brand_ids="filter.brand_ids"
+      />
+    </div>
+
     <div class="product-list-empty" v-if="products && products.data.length === 0">
       <p>Нет подходящих товаров</p>
     </div>
@@ -61,6 +68,8 @@
   import type { BrandListItem } from '@/types/brands';
   import { filterKey, clearFilterKey } from '../../symbols';
 
+  const { isMobileOrTablet } = useDevice();
+
   const filter = inject(filterKey);
   const clearFilter = inject(clearFilterKey);
 
@@ -93,21 +102,47 @@
   .section-list {
     &__filter {
       margin-bottom: 30px;
+
+      @include md {
+        display: none;
+      }
     }
 
     &__filter-control {
       margin-top: 20px;
     }
+
+    &__filter-mobile {
+      margin-bottom: 25px;
+      display: none;
+
+      @include md {
+        display: block;
+      }
+    }
   }
 
   .product-list {
+    --span-y: 15px;
+    --span-x: 10px;
+    --col: 3;
     display: flex;
     flex-wrap: wrap;
-    margin: -15px -10px;
+    margin: calc(var(--span-y) * -1) calc(var(--span-x) * -1);
+
+    @include lg {
+      --col: 4;
+    }
+
+    @include sm {
+      --span-y: 10px;
+      --span-x: 3px;
+      --col: 6;
+    }
 
     &__item {
-      width: calc(100% / 12 * 3 - 20px);
-      margin: 15px 10px;
+      width: calc(100% / 12 * var(--col) - var(--span-x) * 2);
+      margin: var(--span-y) var(--span-x);
     }
   }
 

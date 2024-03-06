@@ -43,6 +43,10 @@
       width: 100%;
       height: 347px;
       margin-bottom: 10px;
+
+      @include sm {
+        height: 240px;
+      }
     }
 
     &__img {

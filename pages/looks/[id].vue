@@ -2,7 +2,7 @@
   <main class="page-paddings">
     <div class="wrapper">
       <LookDetailed :id="+$route.params.id" />
-      <LooksSimilar class="tw-mt-24" :look-id="+$route.params.id" />
+      <LooksSimilar class="one-look-similar" :look-id="+$route.params.id" />
     </div>
   </main>
 </template>
@@ -11,3 +11,13 @@
   import LookDetailed from '@/app-modules/look-detailed/index.vue';
   import LooksSimilar from '@/app-modules/looks-similar/index.vue';
 </script>
+
+<style scoped lang="scss">
+  .one-look-similar {
+    margin-top: 100px;
+
+    @include sm {
+      margin-top: 50px;
+    }
+  }
+</style>

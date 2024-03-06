@@ -36,8 +36,8 @@
         </div>
         <div class="product-detailed__actions">
           <ClientOnly>
-            <FavoriteOutlineBtn type="product" :id="productDetailed.id" />
-            <ShareOutlineBtn />
+            <FavoriteOutlineBtn class="product-detailed__action" type="product" :id="productDetailed.id" />
+            <ShareOutlineBtn class="product-detailed__action-share" />
           </ClientOnly>
         </div>
       </div>
@@ -66,21 +66,57 @@
   useBread(productDetailed);
 </script>
 
+<style lang="scss">
+  .product-detailed {
+    &__action {
+      @include sm {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    &__action-share {
+      @include sm {
+        width: 100%;
+        .action-btn-outline {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    }
+  }
+</style>
+
 <style scoped lang="scss">
   .product-detailed {
     &__grid {
       display: flex;
       flex-wrap: wrap;
       gap: 70px;
+
+      @include lg {
+        gap: 50px;
+      }
+
+      @include sm {
+        gap: 20px;
+      }
     }
 
     &__left {
-      flex-basis: 520px;
-      max-width: 520px;
+      width: 520px;
+
+      @include lg {
+        width: 420px;
+      }
+
+      @include sm {
+        width: 100%;
+      }
     }
 
     &__right {
-      flex-basis: 460px;
+      width: 460px;
       flex-grow: 1;
     }
 
@@ -122,8 +158,13 @@
     &__actions {
       margin-top: 40px;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: 20px;
+
+      @include sm {
+        margin-top: 30px;
+      }
     }
   }
 

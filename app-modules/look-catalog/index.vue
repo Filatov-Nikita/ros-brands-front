@@ -7,7 +7,7 @@
       @select:category="filter.filter.look_category_id = $event.id"
     />
 
-    <div class="look-params">
+    <div v-if="isDesktopOrTablet" class="look-params">
       <SelectsBrands
         class="look-params__param"
         v-model="filter.filter['brand_ids[]']"
@@ -29,6 +29,14 @@
         @update:current-items="currentItems.designers.value = $event"
       />
     </div>
+
+    <MSelectLookFilter
+      v-if="isMobile"
+      v-model:brand_ids="filter.filter['brand_ids[]']"
+      v-model:color_ids="filter.filter['color_ids[]']"
+      v-model:style_ids="filter.filter['style_ids[]']"
+      v-model:designer_ids="filter.filter['designer_ids[]']"
+    />
 
     <template v-if="!currentItems.isEmptyAll.value">
       <FilterSelected
@@ -82,6 +90,8 @@
   import CategoriesLevel1 from './components/CategoriesLevel1.vue';
   import FilterSelected from './components/FilterSelected.vue';
 
+  const { isDesktopOrTablet, isMobile } = useDevice();
+
   const { sortedCategories } = await useCatsLevel1();
 
   const filter = useFilter();
@@ -103,6 +113,10 @@
   .look-catalog {
     &__cats {
       margin-bottom: 30px;
+
+      @include sm {
+        margin-bottom: 25px;
+      }
     }
 
     &__selected {
@@ -112,6 +126,10 @@
 
     &__space {
       padding-top: 30px;
+
+      @include sm {
+        padding-top: 20px;
+      }
     }
   }
 

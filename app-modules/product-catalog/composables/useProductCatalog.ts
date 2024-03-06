@@ -33,6 +33,7 @@ export default async function() {
   }
 
   function syncFilter() {
+    clearFilter();
     const query = route.query;
     if(query.level1) {
       filter.level1 = +query.level1;

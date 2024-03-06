@@ -50,11 +50,25 @@
   .favorite-list {
     display: flex;
     flex-wrap: wrap;
-    margin: -10px;
+    margin: calc(var(--span) * -1);
+    --col: 3;
+    --span: 10px;
+
+    @include lg {
+      --col: 4;
+    }
+
+    @include md {
+      --col: 6;
+    }
+
+    @include sm {
+      --span: 5px;
+    }
 
     &__item {
-      margin: 10px;
-      width: calc(100% / 12 * 3 - 20px);
+      margin: var(--span);
+      width: calc(100% / 12 * var(--col) - var(--span) * 2);
     }
   }
 </style>

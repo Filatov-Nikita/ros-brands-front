@@ -1,5 +1,5 @@
 <template>
-  <main class="product-catalog">
+  <main class="product-catalog page-paddings">
     <aside class="top-level-cats">
       <button
         class="nav-link top-level-cats__link"
@@ -15,7 +15,16 @@
     <div class="product-catalog__grid">
       <CategoryList
         v-if="currentCat"
-        class="product-catalog__cat-list" :category="currentCat"
+        class="product-catalog__cat-list"
+        :category="currentCat"
+        :level2="catLevel2"
+        :level3="catLevel3"
+        @change:category="setSubCategory"
+      />
+      <MSelectProductCategories
+        v-if="currentCat"
+        class="product-catalog__m-cat-select"
+        :category="currentCat"
         :level2="catLevel2"
         :level3="catLevel3"
         @change:category="setSubCategory"
@@ -54,30 +63,52 @@
     gap: 30px;
     margin-bottom: 40px;
 
+    @include sm {
+      margin-bottom: 25px;
+    }
+
     &__link {
       @apply tw-text-20 tw-leading-none;
     }
   }
 
   .product-catalog {
-    padding-top: 50px;
-    padding-bottom: 100px;
-
     &__grid {
       display: flex;
       align-items: flex-start;
       gap: 38px;
+
+      @include md {
+        flex-wrap: wrap;
+        gap: 20px;
+      }
     }
 
     &__cat-list {
       flex-basis: 200px;
       flex-shrink: 0;
+
+      @include md {
+        display: none;
+      }
+    }
+
+    &__m-cat-select {
+      display: none;
+      flex-basis: 100%;
+
+      @include md {
+        display: block;
+      }
     }
 
     &__product-list {
       flex-grow: 1;
       flex-basis: 500px;
+
+      @include md {
+        flex-basis: 100%;
+      }
     }
   }
 </style>
-~/stores/product-categories

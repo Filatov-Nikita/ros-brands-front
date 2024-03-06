@@ -14,8 +14,8 @@
         />
         <div class="look-detailed__actions">
           <ClientOnly>
-            <FavoriteOutlineBtn type="look" :id="lookDetailed.data.id" />
-            <ShareOutlineBtn />
+            <FavoriteOutlineBtn class="look-detailed__action" type="look" :id="lookDetailed.data.id" />
+            <ShareOutlineBtn class="look-detailed__action-share" />
           </ClientOnly>
         </div>
       </div>
@@ -51,21 +51,62 @@
   }, { immediate: true });
 </script>
 
+<style lang="scss">
+  .look-detailed {
+    &__action {
+      @include sm {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    &__action-share {
+      @include sm {
+        width: 100%;
+        .action-btn-outline {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    }
+  }
+</style>
+
 <style scoped lang="scss">
   .look-detailed {
     &__grid {
       display: flex;
       flex-wrap: wrap;
       gap: 70px;
+
+      @include lg {
+        gap: 50px;
+      }
     }
 
     &__left {
       width: 520px;
+
+      @include lg {
+        width: 420px;
+      }
+
+      @include sm {
+        width: 100%;
+      }
     }
 
     &__right {
       width: 620px;
       flex-grow: 1;
+
+      @include lg {
+        width: 460px;
+      }
+
+      @include sm {
+        width: 100%;
+      }
     }
 
     &__bread {
@@ -85,8 +126,13 @@
     &__actions {
       margin-top: 40px;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: 20px;
+
+      @include sm {
+        margin-top: 30px;
+      }
     }
   }
 </style>

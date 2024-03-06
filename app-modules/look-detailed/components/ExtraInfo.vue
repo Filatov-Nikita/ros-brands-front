@@ -25,7 +25,12 @@
 <style scoped lang="scss">
   .look-extra-info {
     display: flex;
+    flex-wrap: wrap;
     gap: 30px;
+
+    @include sm {
+      gap: 20px;
+    }
 
     &__label {
       line-height: normal;
@@ -34,9 +39,18 @@
     }
 
     &__item {
+      @include sm {
+        width: 100%;
+      }
+
       & + & {
         border-left: 1px solid #c7c7c7;
         padding-left: 30px;
+
+        @include sm {
+          border-left-width: 0px;
+          padding-left: 0px;
+        }
       }
     }
   }
