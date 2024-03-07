@@ -3,7 +3,7 @@
     <div class="wrapper">
       <div class="header-public__grid">
         <MallList />
-        <Nav v-if="isDesktopOrTablet" class="header-public__nav" />
+        <Nav class="header-public__nav" />
         <div class="header-public__actions">
           <a class="header-action-btn" :href="hrefMap" target="_blank">
             <BaseIcon class="header-action-btn__icon" name="map" />
@@ -28,7 +28,6 @@
 
   const hrefMap = computed(() => `https://${useMallStore().mallCode}.planeta-mall.ru/scheme`);
 
-  const { isDesktopOrTablet } = useDevice();
 
   const showedBurger = ref(false);
 </script>
@@ -44,6 +43,10 @@
       justify-content: space-between;
       align-items: center;
       gap: 30px;
+
+      @include sm {
+        gap: 20px;
+      }
     }
 
     &__actions {
@@ -52,7 +55,7 @@
       gap: 25px;
 
       @include sm {
-        gap: 8px;
+        gap: 4px;
       }
     }
 
