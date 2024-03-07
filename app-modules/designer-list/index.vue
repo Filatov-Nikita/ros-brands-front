@@ -21,7 +21,7 @@
   .designer-list {
     display: flex;
     flex-wrap: wrap;
-    --span-t: 35px;
+    --span-t: 72px;
     --span-l: 98px;
     --col: 4;
     margin-left: calc(var(--span-l) * -1);
@@ -41,7 +41,10 @@
     @include sm {
       --col: 12;
       --span-t: 40px;
-      --span-l: 16px;
+      --span-l: 0px;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 380px;
     }
 
     &__item {
