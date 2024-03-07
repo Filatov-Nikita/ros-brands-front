@@ -14,10 +14,14 @@
 <style scoped lang="scss">
   .favorite-page {
     &__h1 {
-      font-size: 32px;
+      font-size: 26px;
       line-height: normal;
       margin-bottom: 30px;
       @apply tw-font-bold;
+
+      @include sm {
+        margin-bottom: 25px;
+      }
     }
   }
 </style>

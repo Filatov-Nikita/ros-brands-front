@@ -20,15 +20,28 @@
     justify-content: center;
     align-items: center;
 
+    @include sm {
+      min-height: 300px;
+    }
+
     &__text {
       margin-top: 40px;
       font-size: 24px;
       line-height: normal;
+
+      @include sm {
+        margin-top: 25px;
+        font-size: 16px;
+      }
     }
 
     &__img {
       max-width: 260px;
       width: 100%;
+
+      @include sm {
+        max-width: 140px;
+      }
     }
   }
 </style>
