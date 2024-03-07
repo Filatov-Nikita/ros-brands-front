@@ -4,9 +4,11 @@
     <h1 class="look-detailed__name">Образ {{ lookDetailed.data.name }}</h1>
     <div class="look-detailed__grid">
       <div class="look-detailed__left">
-        <SliderPrimary
-          :images="lookDetailed.data.images"
-        />
+        <div class="look-detailed__slider">
+          <SliderPrimary
+            :images="lookDetailed.data.images"
+          />
+        </div>
         <ExtraInfo
           class="look-detailed__extra-info"
           :styles="lookDetailed.data.styles"
@@ -74,6 +76,12 @@
 
 <style scoped lang="scss">
   .look-detailed {
+    &__slider {
+      @include sm {
+        max-width: 380px;
+      }
+    }
+
     &__grid {
       display: flex;
       flex-wrap: wrap;
@@ -81,6 +89,10 @@
 
       @include lg {
         gap: 50px;
+      }
+
+      @include sm {
+        gap: 40px;
       }
     }
 

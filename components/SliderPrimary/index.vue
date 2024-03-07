@@ -58,7 +58,11 @@
 
 <style lang="scss">
   .slider-primary {
-    height: 500px;
+    height: 650px;
+
+    @include lg {
+      height: 520px;
+    }
 
     @include sm {
       height: 420px;
@@ -92,6 +96,10 @@
 
   .slider-primary-mini {
     height: 145px;
+
+    @include lg {
+      height: 130px;
+    }
 
     .swiper-slide {
       cursor: pointer;

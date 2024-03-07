@@ -1,7 +1,7 @@
 <template>
   <section class="looks-similar" v-if="response && response.data.length > 0">
     <h2 class="h2 looks-similar__h2">Другие образы</h2>
-    <div class="looks-similar__items">
+    <div v-if="isDesktopOrTablet" class="looks-similar__items">
       <Item
         class="looks-similar__item"
         v-for="look in response.data"
@@ -9,6 +9,7 @@
         :look="look"
       />
     </div>
+    <MSlider v-else :looks="response.data" />
   </section>
 </template>
 
@@ -16,6 +17,9 @@
   import type { LookListItem } from '@/types/looks';
   import type { Response } from '@/types/shared';
   import Item from '@/app-modules/look-catalog/components/Look/Item.vue';
+  import MSlider from './MSlider.vue';
+
+  const { isDesktopOrTablet } = useDevice();
 
   const props = defineProps<{
     lookId: number,
