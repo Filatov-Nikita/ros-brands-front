@@ -46,6 +46,11 @@
       top: 14px;
       right: 14px;
       z-index: 10;
+
+      @include sm {
+        top: 10px;
+        right: 10px;
+      }
     }
   }
 </style>

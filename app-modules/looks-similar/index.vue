@@ -32,11 +32,6 @@
       .look-card__img-wrap {
         height: 338px;
       }
-
-      .look-card__actions {
-        top: 10px;
-        right: 10px;
-      }
     }
   }
 </style>
