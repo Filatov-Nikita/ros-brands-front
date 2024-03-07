@@ -2,7 +2,9 @@
   <div class="product-detailed" v-if="productDetailed">
     <div class="product-detailed__grid">
       <div class="product-detailed__left">
-        <SliderPrimary :images="productDetailed.images" />
+        <div class="product-detailed__slider">
+          <SliderPrimary :images="productDetailed.images" />
+        </div>
       </div>
       <div class="product-detailed__right">
         <div class="product-detailed__brand-wrap">
@@ -89,6 +91,12 @@
 
 <style scoped lang="scss">
   .product-detailed {
+    &__slider {
+      @include sm {
+        max-width: 380px;
+      }
+    }
+
     &__grid {
       display: flex;
       flex-wrap: wrap;
