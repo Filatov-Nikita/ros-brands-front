@@ -63,6 +63,10 @@
     gap: 30px;
     margin-bottom: 40px;
 
+    @include md {
+      margin-bottom: 30px;
+    }
+
     @include sm {
       margin-bottom: 25px;
     }
