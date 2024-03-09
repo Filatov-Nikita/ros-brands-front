@@ -56,14 +56,26 @@
       object-position: center;
     }
 
-    &__body {
-      margin-bottom: 5px;
-    }
+    &__body {}
 
     &__name {
       flex-grow: 1;
-      min-width: 100px;
+      flex-basis: 100px;
       @apply tw-font-medium;
+
+      @include sm {
+        flex-basis: 100%;
+      }
+    }
+
+    &__price {
+      min-width: 80px;
+      text-align: right;
+
+      @include sm {
+        text-align: left;
+        order: -1;
+      }
     }
 
     &__brand {
@@ -72,8 +84,12 @@
 
     &__grid {
       display: flex;
-      gap: 10px;
+      gap: 5px;
       align-items: flex-start;
+
+      @include sm {
+        flex-wrap: wrap;
+      }
     }
 
     &__actions {
@@ -81,6 +97,11 @@
       top: 14px;
       right: 14px;
       z-index: 10;
+
+      @include sm {
+        top: 10px;
+        right: 10px;
+      }
     }
   }
 </style>

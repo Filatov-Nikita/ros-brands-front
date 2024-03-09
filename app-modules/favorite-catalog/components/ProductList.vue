@@ -26,3 +26,17 @@
     }
   });
 </script>
+
+<style lang="scss">
+  .favorite-list {
+    &__item {
+      .product-item__img-wrap {
+        height: 430px;
+
+        @include sm {
+          height: 240px;
+        }
+      }
+    }
+  }
+</style>
