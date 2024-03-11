@@ -1,6 +1,6 @@
 <template>
   <section class="looks-with-designer" v-if="response && response.data.length > 0">
-    <h2 class="h2 looks-with-designer__h2">Образы</h2>
+    <h2 class="h2 looks-with-designer__h2">Образы от {{ declinatedName }}</h2>
     <LookList :looks="response.data" />
 
     <div v-if="!pagination.isLast.value && meta" class="tw-mt-10 tw-flex tw-flex-col tw-items-center">
@@ -23,6 +23,7 @@
 
   const props = defineProps<{
     designerId: number,
+    declinatedName: string,
   }>();
 
   const page = ref(1);

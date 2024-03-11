@@ -32,6 +32,10 @@
     id: number,
   }>();
 
+  const emits = defineEmits<{
+    (event: 'loaded:data', data: DesignerDetailed): void,
+  }>();
+
   const url = computed(() => `designers/${props.id}`);
 
   const { data: designerDetailed } = await useDataFetch<Response<DesignerDetailed>>(url);
@@ -43,6 +47,10 @@
       { label: 'Стилисты', to: '/designers' },
       { label: designerDetailed.value.data.name, to: `/designers/${props.id}` },
     ]);
+  }
+
+  if(designerDetailed.value) {
+    emits('loaded:data', designerDetailed.value.data);
   }
 </script>
 
