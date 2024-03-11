@@ -18,6 +18,16 @@
 <script setup lang="ts">
   import LookCatalog from '@/app-modules/look-catalog/index.vue';
   import PromoBanner from '@/app-modules/promo-banner/index.vue';
+
+  const mallStore = useMallStore();
+
+  const title = mallStore.currentMall ?
+    `Образы | ${mallStore.currentMall.name} - ${mallStore.currentMall.city}`
+    : 'Образы';
+
+  useSeoMeta({
+    title,
+  });
 </script>
 
 <style scoped lang="scss">

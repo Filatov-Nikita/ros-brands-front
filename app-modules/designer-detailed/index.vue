@@ -1,5 +1,5 @@
 <template>
-  <div class="designer-detailed" v-if="designerDetailed">
+  <div class="designer-detailed">
     <BaseBreadcrumbs class="designer-detailed__bread" />
     <div class="designer-detailed__grid">
       <div class="designer-detailed__img-wrap">
@@ -13,45 +13,25 @@
       </div>
       <div class="designer-detailed__content">
         <h1 class="designer-detailed__name">
-          {{ designerDetailed.data.name }}
+          {{ designerDetailed.name }}
         </h1>
         <p class="designer-detailed__position">
-          {{ designerDetailed.data.position }}
+          {{ designerDetailed.position }}
         </p>
-        <p class="designer-detailed__body" v-html="designerDetailed.data.description"></p>
+        <p class="designer-detailed__body" v-html="designerDetailed.description"></p>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import type { Response } from '@/types/shared';
   import type { DesignerDetailed } from './types';
 
   const props = defineProps<{
-    id: number,
+    designerDetailed: DesignerDetailed,
   }>();
 
-  const emits = defineEmits<{
-    (event: 'loaded:data', data: DesignerDetailed): void,
-  }>();
-
-  const url = computed(() => `designers/${props.id}`);
-
-  const { data: designerDetailed } = await useDataFetch<Response<DesignerDetailed>>(url);
-
-  const image = computed(() => designerDetailed.value?.data.image);
-
-  if(designerDetailed.value) {
-    useBreadcrumbsStore().set([
-      { label: 'Стилисты', to: '/designers' },
-      { label: designerDetailed.value.data.name, to: `/designers/${props.id}` },
-    ]);
-  }
-
-  if(designerDetailed.value) {
-    emits('loaded:data', designerDetailed.value.data);
-  }
+  const image = computed(() => props.designerDetailed.image);
 </script>
 
 <style scoped lang="scss">

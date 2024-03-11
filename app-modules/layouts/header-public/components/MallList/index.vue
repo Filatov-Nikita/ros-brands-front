@@ -35,20 +35,12 @@
 </template>
 
 <script setup lang="ts">
-  import useDataFetch from '@/composables/useDataFetch';
-  import type { MallOne } from '@/types/malls';
-  import type { Response } from '@/types/shared';
-
   const mallStore = useMallStore();
   const showed = ref(false);
 
   function outside() {
     showed.value = false;
   }
-
-  const { data: malls } = await useDataFetch<Response<MallOne[]>>('malls');
-
-  mallStore.setMalls(malls.value?.data ?? []);
 
   const currentMall = computed(() => {
     const mall = mallStore.currentMall;
@@ -68,6 +60,7 @@
   function changeMall(mallId: number) {
     mallStore.setMallId(mallId);
     showed.value = false;
+    location.reload();
   }
 </script>
 

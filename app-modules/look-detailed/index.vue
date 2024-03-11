@@ -39,6 +39,8 @@
     id: number,
   }>();
 
+  const mallStore = useMallStore();
+
   const url = computed(() => `looks/${props.id}`);
 
   const { data: lookDetailed } = await useDataFetch<{ data: LookDetailed }>(url);
@@ -49,6 +51,17 @@
         { label: 'Готовые образы', to: '/' },
         { label: lookDetailed.value.data.name, to: `/looks/${props.id}` },
       ]);
+
+      const mall = mallStore.currentMall ? ` в ${ mallStore.currentMall.name } - ${ mallStore.currentMall.city }` : '';
+      if(lookDetailed.value.data.designer) {
+        useSeoMeta({
+          title: `${lookDetailed.value.data.name} | Образ от ${ lookDetailed.value.data.designer.declinated_name }${ mall }`,
+        });
+      } else {
+        useSeoMeta({
+          title: `Образ ${lookDetailed.value.data.name}${ mall }`,
+        });
+      }
     }
   }, { immediate: true });
 </script>

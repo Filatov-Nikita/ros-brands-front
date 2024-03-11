@@ -54,6 +54,7 @@
   import { ShareOutlineBtn } from '@/app-modules/share-page';
 
   const route = useRoute();
+  const mallStore = useMallStore();
 
   const { data } = await useDataFetch<{ data: ProductDetailed }>(
     computed(() => `products/${route.params.id}`)
@@ -66,6 +67,14 @@
   );
 
   useBread(productDetailed);
+
+  const mall = mallStore.currentMall ? ` в ${ mallStore.currentMall.name } - ${ mallStore.currentMall.city }` : '';
+
+  if(productDetailed.value) {
+    useSeoMeta({
+      title: `${ productDetailed.value.name } от ${productDetailed.value.brand.name}${ mall }`,
+    });
+  }
 </script>
 
 <style lang="scss">

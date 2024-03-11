@@ -9,6 +9,16 @@
 
 <script setup lang="ts">
   import FavoriteCatalog from '@/app-modules/favorite-catalog/index.vue';
+
+  const mallStore = useMallStore();
+
+  const title = mallStore.currentMall ?
+    `Избранное | ${mallStore.currentMall.name} - ${mallStore.currentMall.city}`
+    : 'Избранное';
+
+  useSeoMeta({
+    title,
+  });
 </script>
 
 <style scoped lang="scss">

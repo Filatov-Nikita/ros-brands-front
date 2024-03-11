@@ -2,7 +2,7 @@ import type { MallOne } from '@/types/malls';
 
 export const useMallStore = defineStore('mallStore', function() {
   const malls = ref<MallOne[]>([]);
-  const currentMallId = ref(+(useCookie('mall_id').value ?? useAppConfig().defaultMallId));
+  const currentMallId = ref(+(useCookie('mall_id').value ?? -1));
 
   function setMalls(list: MallOne[]) {
     malls.value = list;
