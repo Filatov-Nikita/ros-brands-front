@@ -1,6 +1,7 @@
 import type { LocationQuery, LocationQueryValue } from 'vue-router';
 
 export interface Filter {
+  page?: number,
   look_category_id?: number,
   'brand_ids[]'?: number[],
   'style_ids[]'?: number[],
@@ -49,6 +50,7 @@ export default function useFilter() {
     filter['style_ids[]'] = toIntArray(query, 'style_ids[]');
     filter['color_ids[]'] = toIntArray(query, 'color_ids[]');
     filter['designer_ids[]'] = toIntArray(query, 'designer_ids[]');
+    filter['page'] = toInt(query, 'page') ?? 1;
   }
 
   function syncQuery() {

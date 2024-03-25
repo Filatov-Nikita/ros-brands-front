@@ -1,4 +1,4 @@
 export default defineAppConfig({
-  apiBaseUrl: 'http://ros.brands/api',
+  apiBaseUrl: 'https://adminsite.planetalook.ru/api',
   defaultMallId: 7,
 });

@@ -5,10 +5,18 @@ import { usePagination } from '@/composables/usePagination';
 import usePaginateQuery from '@/composables/usePaginateQuery';
 
 export default async function useLooks(lookFilter: ReturnType<typeof useFilter>) {
-  const page = ref(1);
+  const page = computed({
+    get() {
+      return lookFilter.filter.page ?? 1;
+    },
+    set(val) {
+      lookFilter.filter.page = val;
+    }
+  });
 
   const query = computed(() => {
     return {
+      page: lookFilter.filter.page,
       look_category_id: lookFilter.filter.look_category_id,
       'brand_ids[]': lookFilter.filter['brand_ids[]'],
       'color_ids[]': lookFilter.filter['color_ids[]'],
