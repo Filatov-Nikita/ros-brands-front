@@ -53,9 +53,9 @@
         :show-start-dots="pagination.showStartDots.value"
         :show-start="pagination.showStart.value"
         :show-end="pagination.showEnd.value"
-        @prev="prev"
-        @next="next"
-        @set-page="setPage"
+        @prev="pagination.prev"
+        @next="pagination.next"
+        @set-page="pagination.setPage"
       />
     </div>
   </div>
@@ -66,14 +66,15 @@
   import FilterControl from './FilterControl.vue';
   import useProductList from '../../composables/useProductList';
   import type { BrandListItem } from '@/types/brands';
-  import { filterKey, clearFilterKey } from '../../symbols';
+  import { filterKey, clearFilterKey, pageKey } from '../../symbols';
 
   const { isMobileOrTablet } = useDevice();
 
   const filter = inject(filterKey);
   const clearFilter = inject(clearFilterKey);
+  const pageValue = inject(pageKey);
 
-  if(!filter || !clearFilter) throw new Error();
+  if(!filter || !clearFilter || !pageValue) throw new Error();
 
   const currentBrandItems = ref<BrandListItem[]>([]);
 
@@ -94,7 +95,7 @@
     next,
     setPage,
     loadMore,
-  } = await useProductList(filter);
+  } = await useProductList(filter, pageValue);
 </script>
 
 <style scoped lang="scss">

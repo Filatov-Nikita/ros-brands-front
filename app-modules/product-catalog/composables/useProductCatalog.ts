@@ -1,5 +1,5 @@
 import type { ProductFilter } from '../types';
-import { filterKey, clearFilterKey } from '../symbols';
+import { filterKey, clearFilterKey, pageKey } from '../symbols';
 import useCategories from './useCategories';
 
 export default async function() {
@@ -8,6 +8,8 @@ export default async function() {
 
   const filter: ProductFilter = reactive({});
 
+  const page = ref(1);
+
   function clearFilter() {
     filter.brand_ids = undefined;
     filter.order_by_price = undefined;
@@ -15,6 +17,7 @@ export default async function() {
 
   provide(filterKey, filter);
   provide(clearFilterKey, clearFilter);
+  provide(pageKey, page);
 
   const {
     catList,
@@ -53,10 +56,14 @@ export default async function() {
     if(query.order_by_price) {
       filter.order_by_price = +query.order_by_price as -1 | 0 | 1;
     }
+    if(query.page) {
+      const p = Number(query.page);
+      if(!isNaN(p)) page.value = p;
+    }
   }
 
   function syncQuery() {
-    router.replace({ query: Object.assign({}, route.query, filter) });
+    router.replace({ query: Object.assign({}, route.query, filter, { page: page.value }) });
   }
 
   watch([
@@ -73,7 +80,7 @@ export default async function() {
     syncFilter();
   }, { immediate: true });
 
-  watch(() => JSON.stringify(filter), () => {
+  watch([ () => JSON.stringify(filter), page ], () => {
     syncQuery();
   });
 

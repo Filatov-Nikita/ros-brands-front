@@ -3,9 +3,7 @@ import type { ProductOne } from '../types/products';
 import type { PaginateResponse } from '@/types/shared';
 import type { ProductFilter } from '../types';
 
-export default async function useProductList(filter: ProductFilter) {
-  const page = ref(1);
-
+export default async function useProductList(filter: ProductFilter, pageVal: Ref<number>) {
   const query = computed(() => {
     const brand_ids = filter.brand_ids?.reduce((acc, value, index) => {
       acc[`brand_ids[${index}]`] = value;
@@ -21,14 +19,16 @@ export default async function useProductList(filter: ProductFilter) {
     }
   });
 
+  const qPag = computed(() => ({ ...query.value, page: pageVal.value }));
+
   const { data: products, refresh } = await useDataFetch<PaginateResponse<ProductOne[]>>('products', {
-    query: computed(() => ({ ...query.value, page: page.value })),
+    query: qPag,
     watch: false,
   });
 
   const meta = computed(() => products.value?.meta ?? null)
 
-  const pagination = usePagination(meta, page);
+  const pagination = usePagination(meta, pageVal);
 
   async function loadMore() {
     if(pagination.isLast.value) return;
@@ -61,7 +61,14 @@ export default async function useProductList(filter: ProductFilter) {
     refresh();
   }
 
-  watch(() => JSON.stringify(query.value), () => refresh());
+  watch(pageVal, () => {
+    refresh();
+  });
+
+  watch(() => JSON.stringify(query.value), () => {
+    pageVal.value = 1;
+    refresh();
+  });
 
   return {
     products,
