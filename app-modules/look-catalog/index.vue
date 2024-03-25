@@ -71,9 +71,9 @@
         :show-start-dots="pagination.showStartDots.value"
         :show-start="pagination.showStart.value"
         :show-end="pagination.showEnd.value"
-        @prev="paginateQuery.prev"
-        @next="paginateQuery.next"
-        @set-page="paginateQuery.setPage"
+        @prev="pagination.prev"
+        @next="pagination.next"
+        @set-page="pagination.setPage"
       />
     </div>
   </div>
@@ -83,7 +83,6 @@
   import useCatsLevel1 from './composables/useCatsLevel1';
   import useFilter from './composables/useFilter';
   import useLooks from './composables/useLooks';
-  import useCatFilter from './composables/useCatFilter';
   import useFilterParamActions from './composables/useFilterParamActions';
   import useCurrentFilterItems from './composables/useCurrentFilterItems';
   import LookList from './components/Look/List.vue';
@@ -94,13 +93,11 @@
 
   const { sortedCategories } = await useCatsLevel1();
 
-  const filter = useFilter();
+  const filter = useFilter({ look_category_id: sortedCategories.value[0]?.id });
 
   const currentItems = useCurrentFilterItems();
 
   const paramActions = useFilterParamActions(filter.filter);
-
-  useCatFilter(filter, sortedCategories);
 
   const { looks, paginateQuery, pagination, meta } = await useLooks(filter);
 
