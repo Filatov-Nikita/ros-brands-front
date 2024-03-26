@@ -1,6 +1,12 @@
 <template>
   <div class="look-extra-info">
-    <div class="look-extra-info__item">
+    <div
+      class="look-extra-info__item"
+      :class="{
+        'look-extra-info__item--first': designer,
+        'look-extra-info__item--full': !designer,
+      }"
+    >
       <p class="look-extra-info__label">Стиль</p>
       <p>{{ styles.map(s => s.name).join(', ') }}</p>
     </div>
@@ -26,7 +32,6 @@
   .look-extra-info {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
 
     @include sm {
       gap: 20px;
@@ -39,8 +44,23 @@
     }
 
     &__item {
+      max-width: 50%;
+
+      &--full {
+        max-width: 100%;
+      }
+
+      &--first {
+        padding-right: 30px;
+
+        @include sm {
+          padding-right: 0px;
+        }
+      }
+
       @include sm {
         width: 100%;
+        max-width: 100%;
       }
 
       & + & {
