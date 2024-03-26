@@ -25,6 +25,10 @@
         <LookProducts :products="lookDetailed.data.products" />
       </div>
     </div>
+    <section class="look-description">
+      <h2 class="h2 look-description__title">Об образе</h2>
+      <p class="look-description__text" v-html="lookDetailed.data.description"></p>
+    </section>
   </div>
 </template>
 
@@ -88,6 +92,16 @@
 </style>
 
 <style scoped lang="scss">
+  .look-description {
+    &__title {
+      margin-bottom: 20px;
+    }
+
+    &__text {
+      white-space: pre-wrap;
+    }
+  }
+
   .look-detailed {
     &__slider {
       @include sm {
@@ -99,6 +113,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 70px;
+      margin-bottom: 60px;
 
       @include lg {
         gap: 50px;
@@ -106,6 +121,7 @@
 
       @include sm {
         gap: 40px;
+        margin-bottom: 30px;
       }
     }
 
