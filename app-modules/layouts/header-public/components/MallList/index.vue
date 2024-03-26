@@ -9,28 +9,36 @@
         alt="логотип ТРЦ"
       >
     </NuxtLink>
-    <button class="mall-list__current" @click="showed = !showed">
-      <span class="mall-list__label">
-        {{ currentMall.city }}
-      </span>
-      <BaseIcon class="mall-list__icon" name="arrow-down" color="#AFAF97" />
-    </button>
-    <Transition
-      enter-active-class="animate__animated mall-dropdown__anim animate__fadeInDown"
-      leave-active-class="animate__animated mall-dropdown__anim animate__fadeOutUp"
-    >
-      <div class="mall-dropdown" v-show="showed">
-        <button
-          class="mall-dropdown__item"
-          :class="{ 'mall-dropdown__item--active': mall.id === mallStore.currentMall?.id }"
-          v-for="mall in mallStore.sortedMalls"
-          :key="mall.id"
-          @click="changeMall(mall.id)"
-        >
-          {{ mall.city }}
-        </button>
-      </div>
-    </Transition>
+    <span v-if="mallStore.sortedMalls.length <= 0" class="tw-w-full tw-block current-city-name">
+      К системе не подключен ни один ТРЦ
+    </span>
+    <span v-else-if="mallStore.sortedMalls.length === 1" class="current-city-name tw-w-full tw-block">
+      {{ currentMall.city }}
+    </span>
+    <template v-else>
+      <button class="mall-list__current" @click="showed = !showed">
+        <span class="current-city-name">
+          {{ currentMall.city }}
+        </span>
+        <BaseIcon class="mall-list__icon" name="arrow-down" color="#AFAF97" />
+      </button>
+      <Transition
+        enter-active-class="animate__animated mall-dropdown__anim animate__fadeInDown"
+        leave-active-class="animate__animated mall-dropdown__anim animate__fadeOutUp"
+      >
+        <div class="mall-dropdown" v-show="showed">
+          <button
+            class="mall-dropdown__item"
+            :class="{ 'mall-dropdown__item--active': mall.id === mallStore.currentMall?.id }"
+            v-for="mall in mallStore.sortedMalls"
+            :key="mall.id"
+            @click="changeMall(mall.id)"
+          >
+            {{ mall.city }}
+          </button>
+        </div>
+      </Transition>
+    </template>
   </div>
 </template>
 
@@ -65,6 +73,14 @@
 </script>
 
 <style scoped lang="scss">
+  .current-city-name {
+    line-height: normal;
+
+    @include sm {
+      font-size: 12px;
+    }
+  }
+
   .mall-list {
     position: relative;
 
@@ -89,14 +105,6 @@
 
       &:hover {
         color: #777777;
-      }
-    }
-
-    &__label {
-      line-height: normal;
-
-      @include sm {
-        font-size: 12px;
       }
     }
 
