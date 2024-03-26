@@ -3,7 +3,13 @@ import type { BrandListItem } from '@/types/brands';
 export default async function() {
   const localBrands = ref<number[]>([]);
 
-  const { data: brandList } = await useDataFetch<BrandListItem[]>('/brands');
+  const query = computed(() => {
+    return {
+      mall_id: useMallStore().currentMallId,
+    }
+  });
+
+  const { data: brandList } = await useDataFetch<BrandListItem[]>('/brands', { query });
 
   const searchText = ref('');
 
