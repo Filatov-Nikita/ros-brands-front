@@ -51,21 +51,20 @@
 
   watch(lookDetailed, () => {
     if(lookDetailed.value) {
+      const look = lookDetailed.value.data;
+      const mall = mallStore.currentMall;
+      const styleLabel = look.styles.map(s => s.name).join(', ');
+
       useBreadcrumbsStore().set([
         { label: 'Готовые образы', to: '/' },
-        { label: lookDetailed.value.data.name, to: `/looks/${props.id}` },
+        { label: look.name, to: `/looks/${props.id}` },
       ]);
 
-      const mall = mallStore.currentMall ? ` в ${ mallStore.currentMall.name } - ${ mallStore.currentMall.city }` : '';
-      if(lookDetailed.value.data.designer) {
-        useSeoMeta({
-          title: `${lookDetailed.value.data.name} | Образ от ${ lookDetailed.value.data.designer.declinated_name }${ mall }`,
-        });
-      } else {
-        useSeoMeta({
-          title: `Образ ${lookDetailed.value.data.name}${ mall }`,
-        });
-      }
+      const mallLabel = mall ? ` | ${ mall.name } - ${ mall.city }` : '';
+
+      useSeoMeta({
+        title: `${look.name} | ${styleLabel}${ mallLabel }`,
+      });
     }
   }, { immediate: true });
 </script>

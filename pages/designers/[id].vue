@@ -30,8 +30,8 @@
     ]);
 
     const title = mallStore.currentMall ?
-      `Стилист | ${ designerDetailed.value.data.name } | ${mallStore.currentMall.name} - ${mallStore.currentMall.city}`
-      : `Стилист | ${ designerDetailed.value.data.name }`;
+      `Образы от ${ designerDetailed.value.data.declinated_name } в ${mallStore.currentMall.name} - ${mallStore.currentMall.city}`
+      : `Образы от ${ designerDetailed.value.data.declinated_name }`;
 
     useSeoMeta({
       title,
