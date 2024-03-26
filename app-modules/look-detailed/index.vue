@@ -7,6 +7,7 @@
         <div class="look-detailed__slider">
           <SliderPrimary
             :images="lookDetailed.data.images"
+            :videoUrl="lookDetailed.data.video_url"
           />
         </div>
         <ExtraInfo

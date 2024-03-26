@@ -17,6 +17,9 @@
     <swiper-slide v-for="image in images">
       <img class="slider-primary__img" :src="image.url" />
     </swiper-slide>
+    <swiper-slide v-if="videoUrl" key="video">
+      <video class="slider-primary__img" :src="videoUrl.url" autoplay muted loop />
+    </swiper-slide>
 
     <button class="slider-primary-prev">
       <BaseIcon class="slider-primary-prev__icon" fit name="slider-prev" />
@@ -37,6 +40,9 @@
     <swiper-slide v-for="image in images">
       <img class="slider-primary-mini__img" :src="image.url" />
     </swiper-slide>
+    <swiper-slide v-if="videoUrl" key="video">
+      <video class="slider-primary-mini__img" :src="videoUrl.url" muted />
+    </swiper-slide>
   </swiper>
 </template>
 <script setup lang="ts">
@@ -47,6 +53,7 @@
 
   defineProps<{
     images: Image[],
+    videoUrl?: Image | null,
   }>();
 
   const miniSwiper = ref<any>(null);
