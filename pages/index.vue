@@ -10,6 +10,7 @@
       <PromoBanner class="home-page__banner" />
     </div>
     <div class="wrapper">
+      <LogoSlider class="home-page__logos" />
       <LookCatalog />
     </div>
   </main>
@@ -18,6 +19,7 @@
 <script setup lang="ts">
   import LookCatalog from '@/app-modules/look-catalog/index.vue';
   import PromoBanner from '@/app-modules/promo-banner/index.vue';
+  import LogoSlider from '@/app-modules/logo-slider/index.vue';
 
   const mallStore = useMallStore();
 
@@ -81,8 +83,16 @@
     &__banner {
       margin-bottom: 40px;
 
-      @include sm {
+      @include md {
         margin-bottom: 30px;
+      }
+    }
+
+    &__logos {
+      margin-bottom: 60px;
+
+      @include md {
+        margin-bottom: 40px;
       }
     }
   }
