@@ -7,28 +7,27 @@
       <span>{{ category.name }}</span>
       <BaseIcon class="root-btn__icon" :class="{ 'root-btn__icon--active': category.id === level2 }" name="arrow-down" color="#929292" />
     </button>
-    <Transition
-      enter-active-class="animate__animated children-list__anim animate__fadeInDown"
-      leave-active-class="animate__animated children-list__anim animate__fadeOutUp"
-    >
-      <nav class="children-list" v-if="showed">
+    <SlideUpDown :active="showed" :duration="300">
+      <nav class="children-list">
         <button
           class="children-list__item"
           :class="{
             'children-list__item--active': child.id === level3,
           }"
-          v-for="child in category.children"
+          v-for="child in sortedChildren"
           :key="child.id"
           @click="changeCategory(category.id, child.id)"
         >
           {{ child.name }}
         </button>
       </nav>
-    </Transition>
+    </SlideUpDown>
   </div>
 </template>
 
 <script setup lang="ts">
+  //@ts-ignore;
+  import SlideUpDown from 'vue-slide-up-down';
   import type { ProductCategory } from '@/types/product-categories';
   import { filterKey } from '../../symbols';
 
@@ -57,6 +56,14 @@
     showed.value = !showed.value;
     changeCategory(level2);
   }
+
+  const sortedChildren = computed(() => {
+    return [ ...props.category.children ].sort((a, b) => {
+      if(a.name < b.name) return -1;
+      else if(a.name > b.name) return 1;
+      return 0;
+    });
+  });
 </script>
 
 <style scoped lang="scss">
