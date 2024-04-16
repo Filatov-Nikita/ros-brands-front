@@ -106,6 +106,8 @@
     &__slider {
       @include sm {
         max-width: 380px;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
 

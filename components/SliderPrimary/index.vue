@@ -18,7 +18,7 @@
       <img class="slider-primary__img" :src="image.url" />
     </swiper-slide>
     <swiper-slide v-if="videoUrl" key="video">
-      <video class="slider-primary__img" :src="videoUrl.url" autoplay muted loop />
+      <video class="slider-primary__video" :src="videoUrl.url" autoplay muted loop />
     </swiper-slide>
 
     <button class="slider-primary-prev">
@@ -41,7 +41,7 @@
       <img class="slider-primary-mini__img" :src="image.url" />
     </swiper-slide>
     <swiper-slide v-if="videoUrl" key="video">
-      <video class="slider-primary-mini__img" :src="videoUrl.url" muted />
+      <video class="slider-primary-mini__video" :src="videoUrl.url" muted />
     </swiper-slide>
   </swiper>
 </template>
@@ -94,10 +94,17 @@
       background-color: #000000;
     }
 
-    &__img {
+    &__img, &__video {
       width: 100%;
       height: 100%;
+    }
+
+    &__img {
       object-fit: cover;
+    }
+
+    &__video {
+      object-fit: contain;
     }
   }
 
@@ -117,10 +124,17 @@
       border: 1px solid theme('colors.black');
     }
 
-    &__img {
+    &__img, &__video {
       width: 100%;
       height: 100%;
+    }
+
+    &__img {
       object-fit: cover;
+    }
+
+    &__video {
+      object-fit: contain;
     }
   }
 
