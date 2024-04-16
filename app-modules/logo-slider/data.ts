@@ -49,14 +49,6 @@ export default [
   },
   {
     img: {
-      src: '/images/logos/nats.svg',
-      height: 92,
-      width: 138,
-      alt: 'nats brand',
-    },
-  },
-  {
-    img: {
       src: '/images/logos/henderson.svg',
       height: 92,
       width: 245,
@@ -85,14 +77,6 @@ export default [
       height: 92,
       width: 185,
       alt: 'PAZOLINI',
-    },
-  },
-  {
-    img: {
-      src: '/images/logos/marco.svg',
-      height: 92,
-      width: 274,
-      alt: 'MARCO DI RADI',
     },
   },
   {
