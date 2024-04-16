@@ -3,7 +3,7 @@
     <div class="wrapper">
       <div class="footer-public__grid">
         <div class="footer-public__col1">
-          <a class="footer-public__logo" href="#">
+          <a class="footer-public__logo" :href="siteHref" target="_blank">
             <img width="185" height="46" src="/images/logo_trk.svg" alt="Логотип ТРЦ">
           </a>
         </div>
@@ -18,17 +18,17 @@
           <p class="footer-public__soc-title">Присоединяйтесь к нам</p>
           <ul class="contact-list">
             <li class="contact-list__item">
-              <a class="contact-list__link" href="#">
+              <a class="contact-list__link" target="_blank" :href="data.socLinks.vk.href">
                 <BaseIcon class="contact-list__icon" name="social-vk" />
               </a>
             </li>
             <li class="contact-list__item">
-              <a class="contact-list__link" href="#">
+              <a class="contact-list__link" target="_blank" :href="data.socLinks.tg.href">
                 <BaseIcon class="contact-list__icon" name="social-tg" />
               </a>
             </li>
             <li class="contact-list__item">
-              <a class="contact-list__link" href="#">
+              <a class="contact-list__link" target="_blank" :href="data.socLinks.youtube.href">
                 <BaseIcon class="contact-list__icon" name="social-youtube" />
               </a>
             </li>
@@ -41,6 +41,10 @@
 
 <script setup lang="ts">
   import { data } from './data';
+
+  const mallStore = useMallStore();
+
+  const siteHref = computed(() => mallStore.currentMall?.site_href ?? '/');
 </script>
 
 <style scoped lang="scss">

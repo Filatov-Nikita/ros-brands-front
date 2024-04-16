@@ -4,13 +4,13 @@ export const data = {
   phone: '+7 (391) 2-771-771',
   socLinks: {
     vk: {
-      href: '',
+      href: 'https://vk.com/public50952130',
     },
     tg: {
-      href: '',
+      href: 'https://t.me/tc_planeta',
     },
     youtube: {
-      href: '',
+      href: 'https://www.youtube.com/channel/UCCcsNs80DRLL-lF6JzV1_eg/videos',
     },
   }
 };
