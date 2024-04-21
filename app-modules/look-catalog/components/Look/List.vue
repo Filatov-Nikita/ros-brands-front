@@ -3,12 +3,18 @@
     <p>Нет подходящих образов</p>
   </div>
   <div v-else class="look-list">
-    <Item
-      class="look-list__item"
-      v-for="look in looks"
+    <template
+      v-for="(look, index) in looks"
       :key="look.id"
-      :look="look"
-    />
+    >
+      <Item
+        class="look-list__item"
+        :look="look"
+      />
+      <div v-if="canShowPhrase(index)" class="look-list__phrase">
+        {{ getPhrase(index) }}
+      </div>
+    </template>
   </div>
 </template>
 
@@ -16,35 +22,57 @@
   import type { LookListItem } from '@/types/looks';
   import Item from './Item.vue';
 
-  defineProps<{
-    looks: LookListItem[],
-  }>();
+  const props = withDefaults(
+    defineProps<{
+      looks: LookListItem[],
+      hidePhrases?: boolean,
+    }>(),
+    { hidePhrases: false }
+  );
+
+  const lookPhrases = useAppConfig().lookPhrases;
+
+  function canShowPhrase(index: number) {
+    return index !== 0 && index % 7 === 0 && !props.hidePhrases
+  }
+
+  function getPhrase(index: number) {
+    return lookPhrases[ (index - 7) / 7 % lookPhrases.length ];
+  }
 </script>
 
 
 <style scoped lang="scss">
   .look-list {
-    display: flex;
-    flex-wrap: wrap;
-    margin: calc(var(--span) * -1);
-    --col: 3;
-    --span: 10px;
-
-    @include lg {
-      --col: 4;
-    }
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 
     @include md {
-      --col: 6;
+      grid-template-columns: repeat(2, 1fr);
     }
 
     @include sm {
-      --span: 5px;
+      gap: 10px;
     }
 
-    &__item {
-      margin: var(--span);
-      width: calc(100% / 12 * var(--col) - var(--span) * 2);
+    &__phrase {
+      text-transform: uppercase;
+      grid-column: 1 / 5;
+      padding: 20px 0;
+      font-size: 72px;
+      letter-spacing: 2%;
+      line-height: 1.3;
+      font-weight: 800;
+
+      @include md {
+        grid-column: 1 / 3;
+      }
+
+      @include sm {
+        padding: 10px 0;
+        font-size: 40px;
+      }
     }
   }
 

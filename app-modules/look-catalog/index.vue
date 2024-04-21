@@ -52,7 +52,7 @@
 
     <div class="look-catalog__space"></div>
 
-    <LookList :looks="looks.data" />
+    <LookList :looks="looks.data" :hidePhrases="womanCat?.id !== filter.filter.look_category_id" />
 
     <div class="tw-mt-14 tw-flex tw-flex-col tw-items-center">
       <BaseButtonOutline
@@ -94,6 +94,8 @@
   const { sortedCategories } = await useCatsLevel1();
 
   const filter = useFilter({ look_category_id: sortedCategories.value[0]?.id });
+
+  const womanCat = computed(() => sortedCategories.value.find(cat => cat.name.toLowerCase() === 'женщины'));
 
   const currentItems = useCurrentFilterItems();
 
