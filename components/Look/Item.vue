@@ -25,6 +25,7 @@
 
 <style scoped lang="scss">
   .look-card {
+    display: block;
     position: relative;
 
     &__img-wrap {
