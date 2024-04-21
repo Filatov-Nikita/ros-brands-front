@@ -12,24 +12,6 @@
         :look="look"
       />
     </swiper-slide>
-    <swiper-slide v-for="look in looks">
-      <Item
-        class="looks-similar__item"
-        :look="look"
-      />
-    </swiper-slide>
-    <swiper-slide v-for="look in looks">
-      <Item
-        class="looks-similar__item"
-        :look="look"
-      />
-    </swiper-slide>
-    <swiper-slide v-for="look in looks">
-      <Item
-        class="looks-similar__item"
-        :look="look"
-      />
-    </swiper-slide>
   </swiper>
 </template>
 
