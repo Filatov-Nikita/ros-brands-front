@@ -3,6 +3,7 @@
     v-if="banners"
     class="promo-banner-swiper"
     loop
+    auto-height
     :autoplay="{
       delay: 5000,
       disableOnInteraction: false,
@@ -77,30 +78,20 @@
 
 <style lang="scss">
   .promo-banner-swiper {
-    height: 430px;
-
-    @include lg {
-      height: 330px;
-    }
-
-    @include md {
-      height: 248px;
-    }
-
-    @include sm {
-      height: 170px;
-    }
-
     &__img {
       width: 100%;
-      height: 100%;
+      height: auto;
       object-fit: cover;
+      max-height: 430px;
+
+      @include sm {
+        max-height: 170px;
+      }
     }
 
     &__href {
-      position: absolute;
+      display: block;
       width: 100%;
-      height: 100%;
     }
   }
 

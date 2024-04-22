@@ -11,9 +11,7 @@
         class="look-list__item"
         :look="look"
       />
-      <div v-if="canShowPhrase(index)" class="look-list__phrase">
-        {{ getPhrase(index) }}
-      </div>
+      <div v-if="canShowPhrase(index)" class="look-list__phrase" v-html="getPhrase(index)"></div>
     </template>
   </div>
 </template>
@@ -41,6 +39,17 @@
   }
 </script>
 
+<style>
+  .look-text-outlined {
+    text-shadow:
+      -1px -1px 0 theme('colors.black'),
+      1px -1px 0 theme('colors.black'),
+      -1px 1px 0 theme('colors.black'),
+      1px 1px 0 theme('colors.black');
+
+    @apply tw-text-white;
+  }
+</style>
 
 <style scoped lang="scss">
   .look-list {
@@ -60,18 +69,19 @@
       text-transform: uppercase;
       grid-column: 1 / 5;
       padding: 20px 0;
-      font-size: 72px;
-      letter-spacing: 2%;
+      font-size: 64px;
+      letter-spacing: 0.02em;
       line-height: 1.3;
       font-weight: 800;
+      @apply tw-text-black;
 
       @include md {
         grid-column: 1 / 3;
       }
 
       @include sm {
-        padding: 10px 0;
-        font-size: 40px;
+        padding: 13px 0;
+        font-size: 32px;
       }
     }
   }
