@@ -77,7 +77,15 @@
 
 <style lang="scss">
   .promo-banner-swiper {
-    height: 350px;
+    height: 430px;
+
+    @include lg {
+      height: 330px;
+    }
+
+    @include md {
+      height: 248px;
+    }
 
     @include sm {
       height: 170px;
