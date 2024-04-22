@@ -1,7 +1,7 @@
 <template>
   <section class="looks-with-designer" v-if="response && response.data.length > 0">
     <h2 class="h2 looks-with-designer__h2">Образы от {{ declinatedName }}</h2>
-    <LookList :looks="response.data" />
+    <LookList :looks="response.data" hidePhrases />
 
     <div v-if="!pagination.isLast.value && meta" class="tw-mt-10 tw-flex tw-flex-col tw-items-center">
       <BaseButtonOutline

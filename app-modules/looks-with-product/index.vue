@@ -1,7 +1,7 @@
 <template>
   <section class="looks-with-product" v-if="response && response.data.length > 0">
     <h2 class="h2 looks-with-product__h2">Образы с этим товаром</h2>
-    <LookList :looks="response.data" />
+    <LookList :looks="response.data" hidePhrases />
 
     <div v-if="!pagination.isLast.value && meta" class="tw-mt-10 tw-flex tw-flex-col tw-items-center">
       <BaseButtonOutline
