@@ -42,11 +42,14 @@
 <style>
   .look-text-outlined {
     text-shadow:
-      -1px -1px 0 theme('colors.black'),
-      1px -1px 0 theme('colors.black'),
-      -1px 1px 0 theme('colors.black'),
-      1px 1px 0 theme('colors.black');
-
+      1px 0px 0px theme('colors.black'),
+      -1px 0px 0px theme('colors.black'),
+      0px -1px 0px theme('colors.black'),
+      0px 1px 0px theme('colors.black'),
+      1px 1px 0px theme('colors.black'),
+      -1px -1px 0px theme('colors.black'),
+      -1px 1px 0px theme('colors.black'),
+      1px -1px 0px theme('colors.black');
     @apply tw-text-white;
   }
 </style>
