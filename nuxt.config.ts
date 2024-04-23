@@ -2,9 +2,25 @@
 
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import path from 'path';
+import * as YaMetrika from './scripts/ya_metrika';
+import * as GoogleTag from './scripts/google_tag';
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  $production: {
+    app: {
+      head: {
+        script: [
+          ...YaMetrika.scripts(),
+          ...GoogleTag.scripts(),
+        ],
+        noscript: [
+          ...YaMetrika.noscript(),
+          ...GoogleTag.noscript(),
+        ]
+      }
+    },
+  },
   routeRules: {
     '/favorites': {
       ssr: false,
