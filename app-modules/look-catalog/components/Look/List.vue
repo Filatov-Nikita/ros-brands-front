@@ -41,15 +41,7 @@
 
 <style>
   .look-text-outlined {
-    text-shadow:
-      1px 0px 0px theme('colors.black'),
-      -1px 0px 0px theme('colors.black'),
-      0px -1px 0px theme('colors.black'),
-      0px 1px 0px theme('colors.black'),
-      1px 1px 0px theme('colors.black'),
-      -1px -1px 0px theme('colors.black'),
-      -1px 1px 0px theme('colors.black'),
-      1px -1px 0px theme('colors.black');
+    text-shadow: rgb(26, 26, 26) 1px 0px 0px, rgb(26, 26, 26) 0.540302px 0.841471px 0px, rgb(26, 26, 26) -0.416147px 0.909297px 0px, rgb(26, 26, 26) -0.989992px 0.14112px 0px, rgb(26, 26, 26) -0.653644px -0.756802px 0px, rgb(26, 26, 26) 0.283662px -0.958924px 0px, rgb(26, 26, 26) 0.96017px -0.279415px 0px;
     @apply tw-text-white;
   }
 </style>
