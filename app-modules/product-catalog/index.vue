@@ -4,7 +4,7 @@
       <button
         class="nav-link top-level-cats__link"
         :class="{ 'nav-link--active': cat.id === catLevel1 }"
-        v-for="cat in catList"
+        v-for="cat in filtredCats"
         :key="cat.id"
         @click="setCatLevel1(cat.id)"
       >
@@ -50,6 +50,10 @@
     setSubCategory,
     syncQuery
   } = await useProductCatalog();
+
+  const filtredCats = computed(() => {
+    return catList.value.filter(cat => cat.name.toLowerCase() !== 'дети');
+  });
 
   onMounted(() => {
     syncQuery();
