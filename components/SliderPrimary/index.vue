@@ -18,7 +18,7 @@
       <img class="slider-primary__img" :src="image.url" />
     </swiper-slide>
     <swiper-slide v-if="videoUrl" key="video">
-      <video class="slider-primary__video" :src="videoUrl.url" autoplay muted loop />
+      <video class="slider-primary__video" :src="videoUrl.url" autoplay playsinline muted loop />
     </swiper-slide>
 
     <button class="slider-primary-prev">
