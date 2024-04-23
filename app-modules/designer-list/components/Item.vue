@@ -29,7 +29,6 @@
     display: block;
 
     &__img-wrap {
-      height: 430px;
       margin-bottom: 16px;
 
       @include sm {
@@ -39,8 +38,7 @@
 
     &__img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
     }
 
     &__name {

@@ -65,16 +65,6 @@
 
 <style lang="scss">
   .slider-primary {
-    height: 650px;
-
-    @include lg {
-      height: 520px;
-    }
-
-    @include sm {
-      height: 420px;
-    }
-
     .swiper-pagination-bullets {
       bottom: 10px;
     }
@@ -96,15 +86,13 @@
 
     &__img, &__video {
       width: 100%;
-      height: 100%;
-    }
-
-    &__img {
-      object-fit: cover;
-    }
-
-    &__video {
+      height: auto;
+      max-height: 650px;
       object-fit: contain;
+
+      @include sm {
+        max-height: 475px;
+      }
     }
   }
 

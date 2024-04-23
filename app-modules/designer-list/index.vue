@@ -17,6 +17,25 @@
   const { data: designers } = await useDataFetch<Response<DesignerListItem[]>>('designers');
 </script>
 
+<style lang="scss">
+  .designer-list {
+    .designer-list__item {
+      .designer-item__img {
+        height: 440px;
+        object-fit: cover;
+
+        @include lg {
+          height: 390px;
+        }
+
+        @include sm {
+          height: auto;
+        }
+      }
+    }
+  }
+</style>
+
 <style scoped lang="scss">
   .designer-list {
     display: flex;
@@ -42,9 +61,6 @@
       --col: 12;
       --span-t: 40px;
       --span-l: 0px;
-      margin-left: auto;
-      margin-right: auto;
-      max-width: 380px;
     }
 
     &__item {

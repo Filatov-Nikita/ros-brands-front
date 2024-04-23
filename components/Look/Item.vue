@@ -28,18 +28,9 @@
     display: block;
     position: relative;
 
-    &__img-wrap {
-      height: 430px;
-
-      @include sm {
-        height: 240px;
-      }
-    }
-
     &__img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
     }
 
     &__actions {

@@ -25,3 +25,18 @@
     }
   });
 </script>
+
+<style lang="scss">
+  .favorite-list {
+    &__item {
+      .look-card__img {
+        object-fit: cover;
+        height: 430px;
+
+        @include sm {
+          height: 290px;
+        }
+      }
+    }
+  }
+</style>

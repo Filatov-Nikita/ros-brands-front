@@ -3,7 +3,6 @@
     v-if="banners"
     class="promo-banner-swiper"
     loop
-    auto-height
     :autoplay="{
       delay: 5000,
       disableOnInteraction: false,

@@ -19,24 +19,6 @@
   }>();
 </script>
 
-<style lang="scss">
-    .look-products {
-      &__item {
-        .product-item__img-wrap {
-          height: 387px;
-
-          @include lg {
-            height: 330px;
-          }
-
-          @include sm {
-            height: 418px;
-          }
-        }
-      }
-    }
-</style>
-
 <style scoped lang="scss">
   .look-products {
     display: flex;
@@ -59,9 +41,6 @@
     @include sm {
       --col: 12;
       --span-l: 0px;
-      max-width: 380px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     &__item {

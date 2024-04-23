@@ -8,7 +8,7 @@
   >
     <swiper-slide v-for="look in looks">
       <Item
-        class="looks-similar__item"
+        class="look-similar-slider__item"
         :look="look"
       />
     </swiper-slide>
@@ -24,9 +24,3 @@
     looks: LookListItem[],
   }>();
 </script>
-
-<style scoped lang="scss">
-  .look-similar-slider {
-    height: 338px;
-  }
-</style>

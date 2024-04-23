@@ -108,6 +108,21 @@
   });
 </script>
 
+<style lang="scss">
+  .look-catalog {
+    .look-list__item {
+      .look-card__img {
+        object-fit: cover;
+        height: 430px;
+
+        @include sm {
+          height: 290px;
+        }
+      }
+    }
+  }
+</style>
+
 <style scoped lang="scss">
   .look-catalog {
     &__cats {

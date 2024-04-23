@@ -42,6 +42,20 @@
   const { loadMore } = usePaginateQuery(pagination, response, execute);
 </script>
 
+<style lang="scss">
+  .looks-with-designer {
+    .look-list__item {
+      .look-card__img {
+        object-fit: cover;
+        height: 430px;
+
+        @include sm {
+          height: 290px;
+        }
+      }
+    }
+  }
+</style>
 
 <style scoped lang="scss">
   .looks-with-designer {

@@ -60,6 +60,21 @@
   });
 </script>
 
+<style lang="scss">
+  .product-catalog {
+    .product-list__item {
+      .product-item__img {
+        height: 347px;
+        object-fit: cover;
+
+        @include sm {
+          height: 290px;
+        }
+      }
+    }
+  }
+</style>
+
 <style scoped lang="scss">
   .top-level-cats {
     display: flex;

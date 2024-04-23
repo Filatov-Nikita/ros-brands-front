@@ -30,8 +30,9 @@
 <style lang="scss">
   .favorite-list {
     &__item {
-      .product-item__img-wrap {
-        height: 430px;
+      .product-item__img {
+        height: 390px;
+        object-fit: cover;
 
         @include sm {
           height: 240px;

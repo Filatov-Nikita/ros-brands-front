@@ -33,8 +33,9 @@
 <style lang="scss">
   .looks-similar {
     &__item {
-      .look-card__img-wrap {
-        height: 338px;
+      .look-card__img {
+        height: 360px;
+        object-fit: cover;
       }
     }
   }

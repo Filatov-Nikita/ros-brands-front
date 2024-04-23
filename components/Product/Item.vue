@@ -39,21 +39,16 @@
     position: relative;
 
     &__img-wrap {
-      position: relative;
-      width: 100%;
-      height: 347px;
       margin-bottom: 10px;
 
       @include sm {
-        height: 240px;
+        margin-bottom: 5px;
       }
     }
 
     &__img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
+      height: auto;
     }
 
     &__body {}
@@ -84,7 +79,7 @@
 
     &__grid {
       display: flex;
-      gap: 5px;
+      gap: 2px;
       align-items: flex-start;
 
       @include sm {
