@@ -57,8 +57,13 @@
     changeCategory(level2);
   }
 
+
+  function filterChildren(categories: ProductCategory[]) {
+    return categories.filter(cat => cat.products_count > 0);
+  }
+
   const sortedChildren = computed(() => {
-    return [ ...props.category.children ].sort((a, b) => {
+    return filterChildren(props.category.children).sort((a, b) => {
       if(a.name < b.name) return -1;
       else if(a.name > b.name) return 1;
       return 0;

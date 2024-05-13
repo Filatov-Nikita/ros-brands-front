@@ -5,4 +5,5 @@ export interface ProductCategory {
   created_at: Date;
   updated_at: Date;
   children:   ProductCategory[];
+  products_count: number,
 }
