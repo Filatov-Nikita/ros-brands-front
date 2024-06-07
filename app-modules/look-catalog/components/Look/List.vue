@@ -31,11 +31,11 @@
   const lookPhrases = useAppConfig().lookPhrases;
 
   function canShowPhrase(index: number) {
-    return index !== 0 && index % 7 === 0 && !props.hidePhrases
+    return !props.hidePhrases && index !== 0 && (index + 1) % 8 === 0;
   }
 
   function getPhrase(index: number) {
-    return lookPhrases[ (index - 7) / 7 % lookPhrases.length ];
+    return lookPhrases[ (index + 1 - 8) / 8 % lookPhrases.length ];
   }
 </script>
 
