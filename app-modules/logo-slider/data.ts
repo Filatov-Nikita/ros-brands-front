@@ -1,6 +1,38 @@
 export default [
   {
     img: {
+      src: '/images/logos/sela.svg',
+      height: 92,
+      width: 121,
+      alt: 'sela',
+    },
+  },
+  {
+    img: {
+      src: '/images/logos/acoola.svg',
+      height: 92,
+      width: 167,
+      alt: 'acoola',
+    },
+  },
+  {
+    img: {
+      src: '/images/logos/minidino.svg',
+      height: 92,
+      width: 187,
+      alt: 'minidino',
+    },
+  },
+  {
+    img: {
+      src: '/images/logos/maag.svg',
+      height: 92,
+      width: 113,
+      alt: 'MAAG',
+    },
+  },
+  {
+    img: {
       src: '/images/logos/2mood.svg',
       height: 92,
       width: 165,
