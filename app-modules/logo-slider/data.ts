@@ -81,14 +81,6 @@ export default [
   },
   {
     img: {
-      src: '/images/logos/henderson.svg',
-      height: 92,
-      width: 245,
-      alt: 'HENDERSON',
-    },
-  },
-  {
-    img: {
       src: '/images/logos/lexmer.svg',
       height: 92,
       width: 192,
@@ -117,14 +109,6 @@ export default [
       height: 92,
       width: 161,
       alt: 'BELUCCI',
-    },
-  },
-  {
-    img: {
-      src: '/images/logos/aurana.svg',
-      height: 92,
-      width: 154,
-      alt: 'Auranna',
     },
   },
   {
