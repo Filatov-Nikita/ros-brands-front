@@ -1,6 +1,22 @@
 export default [
   {
     img: {
+      src: '/images/logos/brusnika.svg',
+      height: 92,
+      width: 224,
+      alt: 'brusnika',
+    },
+  },
+  {
+    img: {
+      src: '/images/logos/iche.svg',
+      height: 92,
+      width: 101,
+      alt: 'ICHE',
+    },
+  },
+  {
+    img: {
       src: '/images/logos/sela.svg',
       height: 92,
       width: 121,
