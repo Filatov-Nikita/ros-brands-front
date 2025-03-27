@@ -1,6 +1,14 @@
 export default [
   {
     img: {
+      src: '/images/logos/idol.svg',
+      height: 92,
+      width: 152,
+      alt: 'IDOL',
+    },
+  },
+  {
+    img: {
       src: '/images/logos/brusnika.svg',
       height: 92,
       width: 224,
