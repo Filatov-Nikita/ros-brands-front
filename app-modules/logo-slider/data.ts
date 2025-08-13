@@ -1,6 +1,30 @@
 export default [
   {
     img: {
+      src: '/images/logos/conso.svg',
+      height: 92,
+      width: 161,
+      alt: 'CONSO',
+    },
+  },
+  {
+    img: {
+      src: '/images/logos/mollis.svg',
+      height: 92,
+      width: 154,
+      alt: 'Mollis',
+    },
+  },
+  {
+    img: {
+      src: '/images/logos/charuel.svg',
+      height: 92,
+      width: 178,
+      alt: 'CHARUEL',
+    },
+  },
+  {
+    img: {
       src: '/images/logos/idol.svg',
       height: 92,
       width: 152,
